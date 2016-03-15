@@ -5,7 +5,7 @@
     <property file="build.properties"/>
     <property file="default.properties"/>
 
-	<target name="main" depends="replacetokens,jslint,csslint,jsdoc,compress,concat,sparql-doc,kill-server,kill-fuseki,deploy,start-fuseki,start-server,test"/>
+	<target name="main" depends="replacetokens,jslint,csslint,jsdoc,compress,concat,sparql-doc,kill-server,kill-fuseki,deploy,start-fuseki,start-server"/>
 
     <target name="replacetokens" description="Replace tokens in files">
         <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-ENDPOINT@@@" value="${fuseki.endpoint}"/>
