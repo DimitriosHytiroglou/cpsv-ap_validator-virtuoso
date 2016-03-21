@@ -1,5 +1,5 @@
 /**
- * DCAT-AP validator server.
+ * CPSV-AP validator server.
  * @license EUPL v1.1
  */
 
@@ -34,7 +34,7 @@ var fusekihost = process.argv[5];
 var fusekiport = process.argv[6];
 
 /**
- * Fuseki endpoint (for example dcat-ap_validator)
+ * Fuseki endpoint (for example cpsv-ap_validator)
  */
 var sparqlEndpoint = process.argv[7];
 
@@ -44,7 +44,7 @@ var sparqlEndpoint = process.argv[7];
 var baseURL = "http://" + fusekihost + ":" + fusekiport;
 
 /**
- * defaultEndpoint (for example http://localhost:3030/dcat-ap_validator) used to drop graph
+ * defaultEndpoint (for example http://localhost:3030/cpsv-ap_validator) used to drop graph
  */
 var defaultEndpoint = baseURL + "/" + sparqlEndpoint;
 
@@ -102,7 +102,7 @@ function removeOldGraphs(jsonContent) {
 }
 
 /**
- * Function which accepts requests from the DCAT-AP validator
+ * Function which accepts requests from the CPSV-AP validator
  * @param {Object} req - http request
  * @param {Object} res - http response
  */
