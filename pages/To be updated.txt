@@ -1,0 +1,1 @@
+XSLT is just a copy of dcat, it does not contain the xslt of CPSV-AP
