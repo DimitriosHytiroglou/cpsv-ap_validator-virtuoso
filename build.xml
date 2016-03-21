@@ -25,7 +25,7 @@
 
 	<taskdef name="jslint" classname="com.googlecode.jslint4java.ant.JSLintTask" classpath="${jslint.dir}/jslint4java-2.0.5.jar" />
 
-	<target name="jslint" description="It invokes jslint4java to evaluate the cpsv-ap js files and tests.">
+	<target name="jslint" description="It invokes jslint4java to evaluate the CPSV-ap js files and tests.">
 		<jslint haltOnFailure="false" options="sloppy">
 			<predef>Cookies,location,window,ActiveXObject,XMLHttpRequest,FormData,Blob,alert,document,casper,DOMParser,$,CodeMirror,clearTimeout,setTimeout,require,process,console</predef>
 			<formatter type="xml" destfile="${jslint.dir}/jslint.xml"/>
@@ -139,7 +139,7 @@
         </exec>
 	</target>
 
-	<target name="kill-server" description="It kills the cpsv-AP server.">
+	<target name="kill-server" description="It kills the CPSV-AP server.">
 		<exec executable="cmd.exe" os="Windows 8.1">
 			<arg value="/c"/>
 			<arg value="kill-server.bat ${server.port}"/>
@@ -161,7 +161,7 @@
        </exec>
 	</target>
 
-	<target name="deploy" description="It deploys (copy) the cpsv-AP validator with documentation on the Fuseki server.">
+	<target name="deploy" description="It deploys (copy) the CPSV-AP validator with documentation on the Fuseki server.">
 		<copy todir="${fuseki-pages.dir}">
 			<fileset dir="${pages.dir}"/>
 		</copy>
@@ -185,7 +185,7 @@
        </exec>
 	</target>
 
-	<target name="start-server" description="It executes the cpsv-AP server.">
+	<target name="start-server" description="It executes the CPSV-AP server.">
 		<exec executable="cmd.exe" spawn="true" os="Windows 8.1">
 			<arg value="/c"/>
 			<arg line="node.exe ${fuseki.dir}/server.js ${server.port} ${server.file} ${server.days} ${fuseki.host} ${fuseki.port} ${fuseki.endpoint} > ${fuseki.dir}/${server.log}"/>
