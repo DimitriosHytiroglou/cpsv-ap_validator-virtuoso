@@ -1,35 +1,35 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="./build.xsl"?>
 
-<project name="DCAT-AP validator" default="main" basedir=".">
+<project name="CPSV-AP validator" default="main" basedir=".">
     <property file="build.properties"/>
     <property file="default.properties"/>
 
 	<target name="main" depends="replacetokens,jslint,csslint,jsdoc,compress,concat,sparql-doc,kill-server,kill-fuseki,deploy,start-fuseki,start-server,test"/>
 
     <target name="replacetokens" description="Replace tokens in files">
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-ENDPOINT@@@" value="${fuseki.endpoint}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-HOMEPAGE@@@" value="${fuseki.page}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-SERVERHOST@@@" value="${server.host}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-SERVERPORT@@@" value="${server.port}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-SERVERCOOKIEDAYS@@@" value="${server.days}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-SERVERCOOKIENAME@@@" value="${server.cookie}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-QUERYFILE@@@" value="${query.file}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-SAMPLETTLFILE@@@" value="${sample-ttl.file}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-SAMPLERDFFILE@@@" value="${sample-rdf.file}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-SAMPLENTFILE@@@" value="${sample-nt.file}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator.js" token="@@@TOKEN-SAMPLEJSONLDFILE@@@" value="${sample-jsonld.file}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator-results.js" token="@@@TOKEN-HOMEPAGE@@@" value="${fuseki.page}"/>
-        <replace file="${js-dcat.dir}/dcat-ap_validator-results.js" token="@@@TOKEN-SERVERCOOKIENAME@@@" value="${server.cookie}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-ENDPOINT@@@" value="${fuseki.endpoint}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-HOMEPAGE@@@" value="${fuseki.page}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-SERVERHOST@@@" value="${server.host}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-SERVERPORT@@@" value="${server.port}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-SERVERCOOKIEDAYS@@@" value="${server.days}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-SERVERCOOKIENAME@@@" value="${server.cookie}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-QUERYFILE@@@" value="${query.file}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-SAMPLETTLFILE@@@" value="${sample-ttl.file}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-SAMPLERDFFILE@@@" value="${sample-rdf.file}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-SAMPLENTFILE@@@" value="${sample-nt.file}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator.js" token="@@@TOKEN-SAMPLEJSONLDFILE@@@" value="${sample-jsonld.file}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator-results.js" token="@@@TOKEN-HOMEPAGE@@@" value="${fuseki.page}"/>
+        <replace file="${js-cpsv.dir}/cpsv-ap_validator-results.js" token="@@@TOKEN-SERVERCOOKIENAME@@@" value="${server.cookie}"/>
     </target>
 
 	<taskdef name="jslint" classname="com.googlecode.jslint4java.ant.JSLintTask" classpath="${jslint.dir}/jslint4java-2.0.5.jar" />
 
-	<target name="jslint" description="It invokes jslint4java to evaluate the dcat-ap js files and tests.">
+	<target name="jslint" description="It invokes jslint4java to evaluate the cpsv-ap js files and tests.">
 		<jslint haltOnFailure="false" options="sloppy">
 			<predef>Cookies,location,window,ActiveXObject,XMLHttpRequest,FormData,Blob,alert,document,casper,DOMParser,$,CodeMirror,clearTimeout,setTimeout,require,process,console</predef>
 			<formatter type="xml" destfile="${jslint.dir}/jslint.xml"/>
-			<fileset dir="${js-dcat.dir}" includes="*.js" />
+			<fileset dir="${js-cpsv.dir}" includes="*.js" />
 			<fileset dir="${tests.dir}" includes="*.js"/>
             <fileset dir="${server.dir}" includes="*.js"/>
 		</jslint>
@@ -37,7 +37,7 @@
 
 	<target name="csslint">
 		<apply executable="java" failonerror="true" parallel="true" output="${csslint.dir}/csslint.xml">
-			<fileset dir="${css-dcat.dir}" includes="*.css" />
+			<fileset dir="${css-cpsv.dir}" includes="*.css" />
 			<arg line="-jar"/>
 			<arg path="${csslint.dir}/js-1.7.6.jar"/>
 			<arg path="${csslint.dir}/csslint-rhino.js" />      
@@ -49,7 +49,7 @@
 	<taskdef name="jsdoc" classname="net.jannon.ant.tasks.JsDoc3" classpath="${jsdoc.dir}/jsdoc3-ant-task-1.0.jar:${jsdoc.home}/lib/js.jar"/>
 	
 	<target name="jsdoc">
-		<jsdoc jsdochome="${jsdoc.home}" to="${jsdoc.dir}/client" dir="${js-dcat.dir}" />
+		<jsdoc jsdochome="${jsdoc.home}" to="${jsdoc.dir}/client" dir="${js-cpsv.dir}" />
         <jsdoc jsdochome="${jsdoc.home}" to="${jsdoc.dir}/server" dir="${server.dir}" />
 	</target>
 
@@ -66,24 +66,24 @@
 	</taskdef>
 
     <target name="compress">
-		<delete dir="${js-dcat.dir}/min"/>
-		<mkdir dir="${js-dcat.dir}/min"/>
+		<delete dir="${js-cpsv.dir}/min"/>
+		<mkdir dir="${js-cpsv.dir}/min"/>
 		<yui-compressor
 			warn="false"
 			munge="true"
 			preserveallsemicolons="false"
-			fromdir="${js-dcat.dir}"
-			todir="${js-dcat.dir}/min"
+			fromdir="${js-cpsv.dir}"
+			todir="${js-cpsv.dir}/min"
 		/>
 		
-		<delete dir="${css-dcat.dir}/min"/>
-		<mkdir dir="${css-dcat.dir}/min"/>
+		<delete dir="${css-cpsv.dir}/min"/>
+		<mkdir dir="${css-cpsv.dir}/min"/>
 		<yui-compressor
 			warn="false"
 			munge="true"
 			preserveallsemicolons="false"
-			fromdir="${css-dcat.dir}"
-			todir="${css-dcat.dir}/min"
+			fromdir="${css-cpsv.dir}"
+			todir="${css-cpsv.dir}/min"
 		/>
 		
 		<delete dir="${cm.dir}/min"/>
@@ -101,21 +101,21 @@
 		<!-- concatenates all compressed request CSS files into one -->
 		<delete dir="${css.dir}/concat/"/>
 		<mkdir dir="${css.dir}/concat/"/>
-		<concat destfile="${css.dir}/concat/dcat.css" force="true" fixlastline="true">
-			<fileset dir="${css-dcat.dir}/min/" includes="dcat-ap_validator-min.css" />
+		<concat destfile="${css.dir}/concat/cpsv.css" force="true" fixlastline="true">
+			<fileset dir="${css-cpsv.dir}/min/" includes="cpsv-ap_validator-min.css" />
 			<fileset dir="${cm.dir}/min/" includes="codemirror-min.css" />
 		</concat>
 		<!-- concatenates all compressed request/response JS files into one -->
 		<delete dir="${js.dir}/concat/"/>
 		<mkdir dir="${js.dir}/concat/"/>
-		<concat destfile="${js.dir}/concat/dcat.js" force="true" fixlastline="true">
+		<concat destfile="${js.dir}/concat/cpsv.js" force="true" fixlastline="true">
 			<fileset dir="${js.dir}/jquery-ui/" includes="jquery-ui.min.js" />
 			<fileset dir="${js.dir}/codemirror/" includes="codemirror-compressed.js" />
-			<fileset dir="${js-dcat.dir}/min/" includes="dcat-ap_validator-min.js" />
+			<fileset dir="${js-cpsv.dir}/min/" includes="cpsv-ap_validator-min.js" />
 		</concat>
-		<concat destfile="${js.dir}/concat/dcat-results.js" force="true" fixlastline="true">
+		<concat destfile="${js.dir}/concat/cpsv-results.js" force="true" fixlastline="true">
 			<fileset dir="${js.dir}" includes="DataTables-1.10.7/media/js/jquery.dataTables.min.js" />
-			<fileset dir="${js-dcat.dir}/min/" includes="dcat-ap_validator-results-min.js" />
+			<fileset dir="${js-cpsv.dir}/min/" includes="cpsv-ap_validator-results-min.js" />
 		</concat>
 	</target>
 
@@ -139,7 +139,7 @@
         </exec>
 	</target>
 
-	<target name="kill-server" description="It kills the DCAT-AP server.">
+	<target name="kill-server" description="It kills the cpsv-AP server.">
 		<exec executable="cmd.exe" os="Windows 8.1">
 			<arg value="/c"/>
 			<arg value="kill-server.bat ${server.port}"/>
@@ -161,7 +161,7 @@
        </exec>
 	</target>
 
-	<target name="deploy" description="It deploys (copy) the DCAT-AP validator with documentation on the Fuseki server.">
+	<target name="deploy" description="It deploys (copy) the cpsv-AP validator with documentation on the Fuseki server.">
 		<copy todir="${fuseki-pages.dir}">
 			<fileset dir="${pages.dir}"/>
 		</copy>
@@ -185,7 +185,7 @@
        </exec>
 	</target>
 
-	<target name="start-server" description="It executes the DCAT-AP server.">
+	<target name="start-server" description="It executes the cpsv-AP server.">
 		<exec executable="cmd.exe" spawn="true" os="Windows 8.1">
 			<arg value="/c"/>
 			<arg line="node.exe ${fuseki.dir}/server.js ${server.port} ${server.file} ${server.days} ${fuseki.host} ${fuseki.port} ${fuseki.endpoint} > ${fuseki.dir}/${server.log}"/>
