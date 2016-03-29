@@ -430,12 +430,10 @@ UNION
 
 UNION
 # Rule_ID:31
-  {SELECT ("Agent" AS ?Class_Name) (31 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:address has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 locn:address.") AS ?Message) ?s ?p ?o
+  {SELECT ("Agent" AS ?Class_Name) (31 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:address has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 locn:address.") AS ?Message) ?s (locn:address AS ?p) (cv:Agent AS ?o)
    WHERE {
      ?s a foaf:Agent.
      ?s locn:address ?address.
-	 BIND (locn:address AS ?p).
-     BIND (?address AS ?o).
    } GROUP BY ?s 
      HAVING (COUNT( ?s) > 1)
   }  
@@ -514,7 +512,7 @@ UNION
    WHERE {
      ?s a cv:BusinessEvent.
      ?s dct:language ?o.
-     ?o ?pred ?val.
+     ?o ?pred ?lan.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND (dct:language AS ?p).
      BIND ("BusinessEvent" AS ?Class_Name).
@@ -531,7 +529,7 @@ UNION
    WHERE {
      ?s a cv:BusinessEvent.
      ?s dct:type ?o.
-     ?o ?pred ?val.
+     ?o ?pred ?type.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND (dct:type AS ?p).
      BIND ("BusinessEvent" AS ?Class_Name).
@@ -558,7 +556,7 @@ UNION
    WHERE {
      ?s a cv:BusinessEvent.
      ?s cv:hasCost ?o.
-     ?o ?pred ?val.
+     ?o ?pred ?cost.
      FILTER(!EXISTS {?o a cv:Cost}).
      BIND (cv:hasCost AS ?p).
      BIND ("BusinessEvent" AS ?Class_Name).
@@ -611,7 +609,7 @@ UNION
    WHERE {
      ?s a cv:Channel.
      ?s cv:ownedBy ?o.
-     ?o ?pred ?val.
+     ?o ?pred ?own.
      FILTER(!EXISTS {?o a org:FormalOrganization}).
      BIND (cv:ownedBy AS ?p).
      BIND ("Channel" AS ?Class_Name).
@@ -620,6 +618,103 @@ UNION
      BIND ("The cv:ownedBy property should be a org:FormalOrganization." AS ?Rule_Description).
      BIND (concat("cv:Channel ",str(?s)," does not have a cv:ownedBy property of type org:FormalOrganization.") AS ?Message).
    }
+  }
+
+UNION
+# Rule_ID:45
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+	 ?s a cv:Cost.
+     ?s dct:description ?o
+     FILTER(!isLiteral(?o)).
+     BIND (dct:description AS ?p).
+     BIND ("Cost" AS ?Class_Name).
+     BIND (45 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:description property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:46
+  {SELECT ("Cost" AS ?Class_Name) (46 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:description has maximum cardinality of 1 for Cost." AS ?Rule_Description) (concat("The cv:Cost ",str(?s)," has more than 1 dct:description.") AS ?Message) ?s (rdf:type AS ?p) (cv:Cost AS ?o)
+   WHERE {
+     ?s a cv:Cost.
+     ?s dct:description ?desc.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }  
+
+UNION
+# Rule_ID:47
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Cost.
+     ?s cv:isDefinedBy ?o.
+     ?o ?pred ?fo.
+     FILTER(!EXISTS {?o a org:FormalOrganization}).
+     BIND (cv:isDefinedBy AS ?p).
+     BIND ("Cost" AS ?Class_Name).
+     BIND (47 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The cv:isDefinedBy property should be a org:FormalOrganization." AS ?Rule_Description).
+     BIND (concat("cv:Cost ",str(?s)," does not have a cv:isDefinedBy property of type org:FormalOrganization.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:48
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Cost.
+     ?s cv:monetary_value ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a xsd:decimal}).
+     BIND (cv:monetary_value AS ?p).
+     BIND ("Cost" AS ?Class_Name).
+     BIND (48 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:monetary_value should be a xsd:decimal." AS ?Rule_Description).
+     BIND (concat("cv:Cost ",str(?s)," does not have a cv:monetary_value property of type xsd:decimal.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:49
+  {SELECT ("Cost" AS ?Class_Name) (49 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:monetary_value has maximum cardinality of 1 for cv:Cost." AS ?Rule_Description) (concat("The cv:Cost ",str(?s)," has more than 1 cv:monetary_value.") AS ?Message) ?s (rdf:type AS ?p) (cv:Cost AS ?o)
+   WHERE {
+     ?s a cv:Cost.
+     ?s cv:monetary_value ?val.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:50
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Cost.
+     ?s cv:currency ?o.
+     ?o ?pred ?cur.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND (cv:currency AS ?p).
+     BIND ("Cost" AS ?Class_Name).
+     BIND (50 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:currency should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("cv:Cost ",str(?s)," does not have a cv:currency property of type skos_Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:51
+  {SELECT ("Cost" AS ?Class_Name) (51 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:currency has maximum cardinality of 1 for cv:Cost." AS ?Rule_Description) (concat("The cv:Cost ",str(?s)," has more than 1 cv:currency.") AS ?Message) ?s (rdf:type AS ?p) (cv:Cost AS ?o)
+   WHERE {
+     ?s a cv:Cost.
+     ?s cv:currency ?cur.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
   }
   
 UNION
