@@ -78,7 +78,7 @@ UNION
      BIND (4 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
      BIND ("The locn:addressArea property should be a literal." AS ?Rule_Description).
-     BIND (concat("The locn:addressArea ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
 
@@ -103,8 +103,8 @@ UNION
      BIND ("Address" AS ?Class_Name).
      BIND (6 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("locn:adminUnitL1 should be a rdfs:Literal." AS ?Rule_Description).
-     BIND (concat("The locn:adminUnitL1 ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+     BIND ("locn:adminUnitL1 should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
  
@@ -129,8 +129,8 @@ UNION
      BIND ("Address" AS ?Class_Name).
      BIND (8 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("locn:adminUnitL2 should be a rdfs:Literal." AS ?Rule_Description).
-     BIND (concat("The locn:adminUnitL2 ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+     BIND ("locn:adminUnitL2 should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
  
@@ -155,8 +155,8 @@ UNION
      BIND ("Address" AS ?Class_Name).
      BIND (10 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("locn:locatorDesignator should be a rdfs:Literal." AS ?Rule_Description).
-     BIND (concat("The locn:locatorDesignator ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+     BIND ("locn:locatorDesignator should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
 
@@ -181,8 +181,8 @@ UNION
      BIND ("Address" AS ?Class_Name).
      BIND (12 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("locn:locatorName should be a rdfs:Literal." AS ?Rule_Description).
-     BIND (concat("The locn:locatorName ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+     BIND ("locn:locatorName should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
 
@@ -207,8 +207,8 @@ UNION
      BIND ("Address" AS ?Class_Name).
      BIND (14 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("locn:poBox should be a rdfs:Literal." AS ?Rule_Description).
-     BIND (concat("The locn:poBox ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+     BIND ("locn:poBox should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
 
@@ -233,8 +233,8 @@ UNION
      BIND ("Address" AS ?Class_Name).
      BIND (16 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("locn:postCode should be a rdfs:Literal." AS ?Rule_Description).
-     BIND (concat("The locn:postCode ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+     BIND ("locn:postCode should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
 
@@ -259,8 +259,8 @@ UNION
      BIND ("Address" AS ?Class_Name).
      BIND (18 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("locn:postName should be a rdfs:Literal." AS ?Rule_Description).
-     BIND (concat("The locn:postName ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+     BIND ("locn:postName should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
 
@@ -285,8 +285,8 @@ UNION
      BIND ("Address" AS ?Class_Name).
      BIND (20 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("locn:thoroughfare should be a rdfs:Literal." AS ?Rule_Description).
-     BIND (concat("The locn:thoroughfare ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+     BIND ("locn:thoroughfare should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
   
