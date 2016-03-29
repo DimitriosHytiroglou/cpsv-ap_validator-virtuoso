@@ -49,7 +49,7 @@ UNION
 
 UNION
 # Rule_ID:2
-  {SELECT ("Address" AS ?Class_Name) (2 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:fullAddress has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:fullAddress.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (2 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:fullAddress has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:fullAddress.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:fullAddress ?fulla.
@@ -59,7 +59,7 @@ UNION
 
 UNION
 # Rule_ID:3
-  {SELECT ("Address" AS ?Class_Name) (3 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:addressArea has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:addressArea.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (3 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:addressArea has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:addressArea.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:addressArea ?adda.
@@ -85,7 +85,7 @@ UNION
 
 UNION
 # Rule_ID:5
-  {SELECT ("Address" AS ?Class_Name) (5 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL1 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL1.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (5 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL1 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL1.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:adminUnitL1 ?unitL1.
@@ -111,7 +111,7 @@ UNION
  
 UNION
 # Rule_ID:7
-  {SELECT ("Address" AS ?Class_Name) (7 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL2 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL2.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (7 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL2 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL2.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:adminUnitL2 ?unitL2.
@@ -137,7 +137,7 @@ UNION
  
 UNION
 # Rule_ID:9
-  {SELECT ("Address" AS ?Class_Name) (9 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:locatorDesignator has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:locatorDesignator.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (9 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:locatorDesignator has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:locatorDesignator.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:locatorDesignator ?locad.
@@ -163,7 +163,7 @@ UNION
 
 UNION
 # Rule_ID:11
-  {SELECT ("Address" AS ?Class_Name) (11 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:locatorName has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:locatorName.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (11 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:locatorName has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:locatorName.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:locatorName ?locan.
@@ -189,7 +189,7 @@ UNION
 
 UNION
 # Rule_ID:13
-  {SELECT ("Address" AS ?Class_Name) (13 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:poBox has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:poBox.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (13 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:poBox has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:poBox.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:poBox ?pobox.
@@ -215,7 +215,7 @@ UNION
 
 UNION
 # Rule_ID:15
-  {SELECT ("Address" AS ?Class_Name) (15 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:postCode has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:postCode.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (15 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:postCode has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:postCode.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:postCode ?postc.
@@ -241,7 +241,7 @@ UNION
 
 UNION
 # Rule_ID:17
-  {SELECT ("Address" AS ?Class_Name) (17 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:postName has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:postName.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (17 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:postName has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:postName.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:postName ?postn.
@@ -267,7 +267,7 @@ UNION
 
 UNION
 # Rule_ID:19
-  {SELECT ("Address" AS ?Class_Name) (19 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:thoroughfare has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:thoroughfare.") AS ?Message) ?s
+  {SELECT ("Address" AS ?Class_Name) (19 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:thoroughfare has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:thoroughfare.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:thoroughfare ?fare.
@@ -325,7 +325,7 @@ UNION
   
 UNION
 # Rule_ID:23
-  {SELECT ("Agent" AS ?Class_Name) (23 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:title has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 dct:title.") AS ?Message) ?s
+  {SELECT ("Agent" AS ?Class_Name) (23 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:title has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 dct:title.") AS ?Message) ?s (rdf:type AS ?p) (foaf:Agent AS ?o)
    WHERE {
      ?s a foaf:Agent.
      ?s dct:title ?name.
@@ -335,7 +335,7 @@ UNION
   
 UNION
 # Rule_ID:24
-  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
    WHERE {
      ?s a foaf:Agent.
      ?s dct:type ?o.
@@ -351,7 +351,7 @@ UNION
 
 UNION
 # Rule_ID:25
-  {SELECT ("Agent" AS ?Class_Name) (25 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s
+  {SELECT ("Agent" AS ?Class_Name) (25 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s (rdf:type AS ?p) (foaf:Agent AS ?o)
    WHERE {
      ?s a foaf:Agent.
      ?s dct:type ?type.
@@ -361,7 +361,7 @@ UNION
   
 UNION
 # Rule_ID:26
-  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
    WHERE {
      ?s a foaf:Agent.
      ?s cv:hasRole ?o.
@@ -377,7 +377,7 @@ UNION
 
 UNION
 # Rule_ID:27
-  {SELECT ("Agent" AS ?Class_Name) (27 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:hasRole has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 cv:hasRole.") AS ?Message) ?s
+  {SELECT ("Agent" AS ?Class_Name) (27 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:hasRole has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 cv:hasRole.") AS ?Message) ?s (rdf:type AS ?p) (foaf:Agent AS ?o)
    WHERE {
      ?s a foaf:Agent.
      ?s cv:hasRole ?role.
@@ -387,7 +387,7 @@ UNION
 
 UNION
 # Rule_ID:28
-  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
    WHERE {
      ?s a foaf:Agent.
      ?s cv:uses ?o.
@@ -403,7 +403,7 @@ UNION
 
 UNION
 # Rule_ID:29
-  {SELECT ("Agent" AS ?Class_Name) (29 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:uses has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 cv:uses.") AS ?Message) ?s
+  {SELECT ("Agent" AS ?Class_Name) (29 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:uses has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 cv:uses.") AS ?Message) ?s (rdf:type AS ?p) (foaf:Agent AS ?o)
    WHERE {
      ?s a foaf:Agent.
      ?s cv:uses ?uses.
@@ -413,29 +413,42 @@ UNION
 
 UNION
 # Rule_ID:30
-  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
    WHERE {
      ?s a foaf:Agent.
      ?s locn:address ?o.
      ?o ?pred ?val.
-     FILTER(!EXISTS {?o a skos:Concept}).
+     FILTER(!EXISTS {?o a locn:Address}).
      BIND ("Agent" AS ?Class_Name).
      BIND (30 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("locn:address should be a skos:Concept." AS ?Rule_Description).
-     BIND (concat("foaf:Agent ",str(?s)," does not have a locn:address property of type skos:Concept.") AS ?Message).
+     BIND ("locn:address should be a locn:Address." AS ?Rule_Description).
+     BIND (concat("foaf:Agent ",str(?s)," does not have a locn:address property of type locn:Address.") AS ?Message).
    }
   }
 
 UNION
 # Rule_ID:31
-  {SELECT ("Agent" AS ?Class_Name) (31 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:address has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 locn:address.") AS ?Message) ?s
+  {SELECT ("Agent" AS ?Class_Name) (31 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:address has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 locn:address.") AS ?Message) ?s (rdf:type AS ?p) (foaf:Agent AS ?o)
    WHERE {
      ?s a foaf:Agent.
      ?s locn:address ?address.
    } GROUP BY ?s 
      HAVING (COUNT( ?s) > 1)
   }  
+
+UNION
+# Rule_ID:112
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     FILTER(!EXISTS {?s a cv:BusinessEvent}).
+     BIND ("BusinessEvent" AS ?Class_Name).
+     BIND (112 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:BusinessEvent does not exist." AS ?Rule_Description).
+     BIND (concat("The mandatory class cv:BusinessEvent does not exist.") AS ?Message).
+   }
+  }
   
 }
 }
