@@ -430,10 +430,12 @@ UNION
 
 UNION
 # Rule_ID:31
-  {SELECT ("Agent" AS ?Class_Name) (31 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:address has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 locn:address.") AS ?Message) ?s (rdf:type AS ?p) (foaf:Agent AS ?o)
+  {SELECT ("Agent" AS ?Class_Name) (31 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:address has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 locn:address.") AS ?Message) ?s ?p ?o
    WHERE {
      ?s a foaf:Agent.
      ?s locn:address ?address.
+	 BIND (locn:address AS ?p).
+     BIND (?address AS ?o).
    } GROUP BY ?s 
      HAVING (COUNT( ?s) > 1)
   }  
