@@ -2,7 +2,7 @@ PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX locn: <http://www.w3.org/ns/locn/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
@@ -72,7 +72,8 @@ UNION
    WHERE {
      ?s a locn:Address.
      ?s locn:addressArea ?o.
-     FILTER(!EXISTS {?o a rdfs:Literal}).
+     FILTER(!isLiteral(?o)).
+     BIND (locn:addressArea AS ?p).
      BIND ("Address" AS ?Class_Name).
      BIND (4 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
@@ -97,7 +98,8 @@ UNION
    WHERE {
      ?s a locn:Address.
      ?s locn:adminUnitL1 ?o.
-     FILTER(!EXISTS {?o a rdfs:Literal}).
+     FILTER(!isLiteral(?o)).
+     BIND (locn:adminUnitL1 AS ?p).
      BIND ("Address" AS ?Class_Name).
      BIND (6 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
@@ -122,7 +124,8 @@ UNION
    WHERE {
      ?s a locn:Address.
      ?s locn:adminUnitL2 ?o.
-     FILTER(!EXISTS {?o a rdfs:Literal}).
+     FILTER(!isLiteral(?o)).
+     BIND (locn:adminUnitL2 AS ?p).
      BIND ("Address" AS ?Class_Name).
      BIND (8 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
@@ -147,7 +150,8 @@ UNION
    WHERE {
      ?s a locn:Address.
      ?s locn:locatorDesignator ?o.
-     FILTER(!EXISTS {?o a rdfs:Literal}).
+     FILTER(!isLiteral(?o)).
+     BIND (locn:locatorDesignator AS ?p).
      BIND ("Address" AS ?Class_Name).
      BIND (10 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
@@ -172,7 +176,8 @@ UNION
    WHERE {
      ?s a locn:Address.
      ?s locn:locatorName ?o.
-     FILTER(!EXISTS {?o a rdfs:Literal}).
+     FILTER(!isLiteral(?o)).
+     BIND (locn:locatorName AS ?p).
      BIND ("Address" AS ?Class_Name).
      BIND (12 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
@@ -197,7 +202,8 @@ UNION
    WHERE {
      ?s a locn:Address.
      ?s locn:poBox ?o.
-     FILTER(!EXISTS {?o a rdfs:Literal}).
+     FILTER(!isLiteral(?o)).
+     BIND (locn:poBox AS ?p).
      BIND ("Address" AS ?Class_Name).
      BIND (14 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
@@ -222,7 +228,8 @@ UNION
    WHERE {
      ?s a locn:Address.
      ?s locn:postCode ?o.
-     FILTER(!EXISTS {?o a rdfs:Literal}).
+     FILTER(!isLiteral(?o)).
+     BIND (locn:postCode AS ?p).
      BIND ("Address" AS ?Class_Name).
      BIND (16 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
@@ -247,7 +254,8 @@ UNION
    WHERE {
      ?s a locn:Address.
      ?s locn:postName ?o.
-     FILTER(!EXISTS {?o a rdfs:Literal}).
+     FILTER(!isLiteral(?o)).
+     BIND (locn:postName AS ?p).
      BIND ("Address" AS ?Class_Name).
      BIND (18 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
@@ -272,7 +280,8 @@ UNION
    WHERE {
      ?s a locn:Address.
      ?s locn:thoroughfare ?o.
-     FILTER(!EXISTS {?o a rdfs:Literal}).
+     FILTER(!isLiteral(?o)).
+     BIND (locn:thoroughfare AS ?p).
      BIND ("Address" AS ?Class_Name).
      BIND (20 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).

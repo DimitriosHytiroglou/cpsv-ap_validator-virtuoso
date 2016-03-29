@@ -18,16 +18,19 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 
-<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> a foaf:Agent ;
-	cpsv:hasRole <http://europa.eu/youreurope/businessOntology#start-grow/intellectual-property-rights/European-Patent-National-Validation> ;
-	<http://www.w3.org/ns/locn/address> <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Address/OEPM> ;
-	a org:FormalOrganization ;
-	a cpsvap:PublicOrganisation .
+<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Address/OEPM> a <http://www.w3.org/ns/locn/Address> ;
+	<http://www.w3.org/ns/locn/fullAddress> "Paseo de la Castellana, n° 75, 28071 Madrid" ;
+	<http://www.w3.org/ns/locn/addressArea> "Madrid" ;
+	<http://www.w3.org/ns/locn/adminUnitL1> "http://publications.europa.eu/resource/authority/country/ESP" ;
+	<http://www.w3.org/ns/locn/adminUnitL2> "Madrid" ;
+	<http://www.w3.org/ns/locn/locatorDesignator> "75" ;
+	<http://www.w3.org/ns/locn/postCode> "28071" ;
+	<http://www.w3.org/ns/locn/postName> "Madrid" .
 
-<http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#MS/Belgium> a foaf:Agent ;
-	cpsv:hasRole <http://europa.eu/youreurope/businessOntology#vat-customs/buy-sell/VAT-Return> ;
-	foaf:name "Bureau Central de TVA" ;
-	<http://www.w3.org/ns/locn/address> <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Address> ;
-	a org:FormalOrganization ;
-	foaf:name "Centraal BTW-Kantoor" ;
-	a cpsvap:PublicOrganisation .
+<http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Address> a <http://www.w3.org/ns/locn/Address> ;
+	<http://www.w3.org/ns/locn/fullAddress> "Bvd Jardin botanique 50 (étage 18 R boîte 3626) 1000 Bruxelles - BELGIQUE " ;
+	<http://www.w3.org/ns/locn/adminUnitL1> "http://publications.europa.eu/resource/authority/country/BEL" ;
+	<http://www.w3.org/ns/locn/adminUnitL2> "Brussels" ;
+	<http://www.w3.org/ns/locn/locatorDesignator> "50" ;
+	<http://www.w3.org/ns/locn/postCode> "1000" ;
+	<http://www.w3.org/ns/locn/postName> "Brussels" .
