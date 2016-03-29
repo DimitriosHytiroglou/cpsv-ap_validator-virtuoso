@@ -555,13 +555,14 @@ UNION
    WHERE {
      ?s a cv:BusinessEvent.
      ?s cv:hasCost ?o.
-     FILTER(!isLiteral(?o)).
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a cv:Cost}).
      BIND (cv:hasCost AS ?p).
      BIND ("BusinessEvent" AS ?Class_Name).
      BIND (40 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("The cv:hasCost property should be a literal." AS ?Rule_Description).
-     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+     BIND ("The cv:hasCost property should be a cv:Cost." AS ?Rule_Description).
+     BIND (concat("cv:BusinessEvent ",str(?s)," does not have a cv:hasCost property of type cv:Cost.") AS ?Message).
    }
   }
 
@@ -589,6 +590,33 @@ UNION
      ?s cv:processingTime ?proctime.
    } GROUP BY ?s 
      HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:43
+  {SELECT ("Channel" AS ?Class_Name) (43 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for cv:Channel." AS ?Rule_Description) (concat("The cv:Channel ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s (rdf:type AS ?p) (cv:Channel AS ?o)
+   WHERE {
+     ?s a cv:Channel.
+     ?s dct:type ?type.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:44
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Channel.
+     ?s cv:ownedBy ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a org:FormalOrganization}).
+     BIND (cv:ownedBy AS ?p).
+     BIND ("Channel" AS ?Class_Name).
+     BIND (44 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The cv:ownedBy property should be a org:FormalOrganization." AS ?Rule_Description).
+     BIND (concat("cv:BusinessEvent ",str(?s)," does not have a cv:ownedBy property of type org:FormalOrganization.") AS ?Message).
+   }
   }
   
 UNION

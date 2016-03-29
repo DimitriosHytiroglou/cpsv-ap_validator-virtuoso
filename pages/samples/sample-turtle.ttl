@@ -60,3 +60,21 @@
 	# dct:title "Taxes & customs" ;
 	dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dct:type <http://127.0.0.1:3333/Doing+business> .
+	
+	
+<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Channel/Telephone> a cv:Channel ;
+	dct:type <http://127.0.0.1:3333/Telephone> ;
+	dct:type <http://127.0.0.1:3333/Fax> ;
+	cv:ownedBy <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> .
+
+<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Channel/Homepage> a cv:Channel ;
+	dct:type <http://127.0.0.1:3333/Homepage> ;
+	cv:ownedBy <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> .
+
+<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Channel/Fax> a cv:Channel ;
+	dct:type <http://127.0.0.1:3333/Fax> ;
+	cv:ownedBy <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> .
+
+<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Channel/Email> a cv:Channel ;
+	dct:type <http://127.0.0.1:3333/E-mail> ;
+	cv:ownedBy <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> .
