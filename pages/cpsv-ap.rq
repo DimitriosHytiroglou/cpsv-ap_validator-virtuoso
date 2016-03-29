@@ -438,6 +438,160 @@ UNION
   }  
 
 UNION
+# Rule_ID:32
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:BusinessEvent.
+     FILTER(!EXISTS {?s dct:title ?name}).
+     BIND (rdf:type AS ?p).
+     BIND (cv:BusinessEvent AS ?o).
+     BIND ("BusinessEvent" AS ?Class_Name).
+     BIND (32 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:title is a required property for BusinessEvent." AS ?Rule_Description).
+     BIND (concat("The cv:BusinessEvent ",str(?o)," does not have a dct:title property.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:33
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s dct:title ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:title AS ?p).
+     BIND ("BusinessEvent" AS ?Class_Name).
+     BIND (33 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:title property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:34
+  {SELECT ("BusinessEvent" AS ?Class_Name) (34 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:title has maximum cardinality of 1 for BusinessEvent." AS ?Rule_Description) (concat("The cv:BusinessEvent ",str(?s)," has more than 1 dct:title.") AS ?Message) ?s (rdf:type AS ?p) (cv:BusinessEvent AS ?o)
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s dct:title ?name.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:35
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s dct:description ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:description AS ?p).
+     BIND ("BusinessEvent" AS ?Class_Name).
+     BIND (35 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:description property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:36
+  {SELECT ("BusinessEvent" AS ?Class_Name) (36 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:description has maximum cardinality of 1 for BusinessEvent." AS ?Rule_Description) (concat("The cv:BusinessEvent ",str(?s)," has more than 1 dct:description.") AS ?Message) ?s (rdf:type AS ?p) (cv:BusinessEvent AS ?o)
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s dct:description ?desc.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }  
+
+UNION
+# Rule_ID:37
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s dct:language ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND (dct:language AS ?p).
+     BIND ("BusinessEvent" AS ?Class_Name).
+     BIND (37 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:language should be a dct:LinguisticSystem." AS ?Rule_Description).
+     BIND (concat("cv:BusinessEvent ",str(?s)," does not have a dct:language property of type dct:LinguisticSystem.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:38
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s dct:type ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND (dct:type AS ?p).
+     BIND ("BusinessEvent" AS ?Class_Name).
+     BIND (38 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:type should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("cv:BusinessEvent ",str(?s)," does not have a dct:type property of type skos:Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:39
+  {SELECT ("BusinessEvent" AS ?Class_Name) (39 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for BusinessEvent." AS ?Rule_Description) (concat("The cv:BusinessEvent ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s (rdf:type AS ?p) (cv:BusinessEvent AS ?o)
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s dct:type ?type.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  } 
+
+UNION
+# Rule_ID:40
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s cv:hasCost ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (cv:hasCost AS ?p).
+     BIND ("BusinessEvent" AS ?Class_Name).
+     BIND (40 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The cv:hasCost property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:41
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s cv:processingTime ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (cv:processingTime AS ?p).
+     BIND ("BusinessEvent" AS ?Class_Name).
+     BIND (41 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The cv:processingTime property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:42
+  {SELECT ("BusinessEvent" AS ?Class_Name) (42 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:processingTime has maximum cardinality of 1 for cv:BusinessEvent." AS ?Rule_Description) (concat("The cv:BusinessEvent ",str(?s)," has more than 1 cv:processingTime.") AS ?Message) ?s (rdf:type AS ?p) (cv:BusinessEvent AS ?o)
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s cv:processingTime ?proctime.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+  
+UNION
 # Rule_ID:112
   {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
    WHERE {
