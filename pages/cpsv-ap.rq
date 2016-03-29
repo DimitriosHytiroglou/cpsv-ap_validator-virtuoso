@@ -290,24 +290,152 @@ UNION
      BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
-  
-# UNION
-# # Rule_ID:3
-  # {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
-   # WHERE {
-     # ?s a foaf:Agent.
-     # ?s dct:type ?o.
-     # ?o ?pred ?val.
-     # FILTER(!EXISTS {?o a skos:Concept}).
-     # BIND ("Agent" AS ?Class_Name).
-     # BIND (3 AS ?Rule_ID).
-     # BIND ("error" AS ?Rule_Severity).
-     # BIND ("dct:type should be a skos:Concept." AS ?Rule_Description).
-     # BIND (concat("foaf:Agent ",str(?s)," does not have a dct:type property of type skos:Concept.") AS ?Message).
-   # }
-  # }
 
-  
+UNION
+# Rule_ID:21
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a foaf:Agent.
+     FILTER(!EXISTS {?s dct:title ?name}).
+     BIND (rdf:type AS ?p).
+     BIND (foaf:Agent AS ?o).
+     BIND ("Agent" AS ?Class_Name).
+     BIND (21 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:title is a required property for Agent." AS ?Rule_Description).
+     BIND (concat("The agent  ",str(?o)," does not have a dct:title property.") AS ?Message).
+   }
+  }
 
+UNION
+# Rule_ID:22
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a foaf:Agent.
+     ?s dct:title ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:title AS ?p).
+     BIND ("Agent" AS ?Class_Name).
+     BIND (22 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:title property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:23
+  {SELECT ("Agent" AS ?Class_Name) (23 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:title has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 dct:title.") AS ?Message) ?s
+   WHERE {
+     ?s a foaf:Agent.
+     ?s dct:title ?name.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+  
+UNION
+# Rule_ID:24
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+   WHERE {
+     ?s a foaf:Agent.
+     ?s dct:type ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND ("Agent" AS ?Class_Name).
+     BIND (24 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:type should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("foaf:Agent ",str(?s)," does not have a dct:type property of type skos:Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:25
+  {SELECT ("Agent" AS ?Class_Name) (25 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s
+   WHERE {
+     ?s a foaf:Agent.
+     ?s dct:type ?type.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+  
+UNION
+# Rule_ID:26
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+   WHERE {
+     ?s a foaf:Agent.
+     ?s cv:hasRole ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND ("Agent" AS ?Class_Name).
+     BIND (26 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:hasRole should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("foaf:Agent ",str(?s)," does not have a cv:hasRole property of type skos:Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:27
+  {SELECT ("Agent" AS ?Class_Name) (27 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:hasRole has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 cv:hasRole.") AS ?Message) ?s
+   WHERE {
+     ?s a foaf:Agent.
+     ?s cv:hasRole ?role.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  } 
+
+UNION
+# Rule_ID:28
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+   WHERE {
+     ?s a foaf:Agent.
+     ?s cv:uses ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND ("Agent" AS ?Class_Name).
+     BIND (28 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:uses should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("foaf:Agent ",str(?s)," does not have a cv:uses property of type skos:Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:29
+  {SELECT ("Agent" AS ?Class_Name) (29 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:uses has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 cv:uses.") AS ?Message) ?s
+   WHERE {
+     ?s a foaf:Agent.
+     ?s cv:uses ?uses.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:30
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+   WHERE {
+     ?s a foaf:Agent.
+     ?s locn:address ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND ("Agent" AS ?Class_Name).
+     BIND (30 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:address should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("foaf:Agent ",str(?s)," does not have a locn:address property of type skos:Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:31
+  {SELECT ("Agent" AS ?Class_Name) (31 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:address has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The foaf:Agent ",str(?s)," has more than 1 locn:address.") AS ?Message) ?s
+   WHERE {
+     ?s a foaf:Agent.
+     ?s locn:address ?address.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }  
+  
 }
 }

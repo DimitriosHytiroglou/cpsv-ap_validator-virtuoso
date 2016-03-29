@@ -35,7 +35,7 @@
 	<http://www.w3.org/ns/locn#postName> "Brussels" .
 
 <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> a foaf:Agent ;
-	cpsv:hasRole <http://europa.eu/youreurope/businessOntology#start-grow/intellectual-property-rights/European-Patent-National-Validation> ;
+	cv:hasRole <http://europa.eu/youreurope/businessOntology#start-grow/intellectual-property-rights/European-Patent-National-Validation> ;
 	foaf:name "Spanish patent and trademark office " ;
 	<http://www.w3.org/ns/locn#address> <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Address/OEPM> .
 	# a org:FormalOrganization ;
@@ -43,9 +43,10 @@
 	# a cpsvap:PublicOrganisation .
 
 <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#MS/Belgium> a foaf:Agent ;
-	cpsv:hasRole <http://europa.eu/youreurope/businessOntology#vat-customs/buy-sell/VAT-Return> ;
+	cv:hasRole <http://europa.eu/youreurope/businessOntology#vat-customs/buy-sell/VAT-Return> ;
 	foaf:name "Bureau Central de TVA" ;
-	<http://www.w3.org/ns/locn#address> <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Address> .
+	<http://www.w3.org/ns/locn#address> <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Address> ;
+	<http://www.w3.org/ns/locn#address> <wrongAddress> .
 	# a org:FormalOrganization ;
 	# foaf:name "Centraal BTW-Kantoor" ;
 	# a cpsvap:PublicOrganisation .
