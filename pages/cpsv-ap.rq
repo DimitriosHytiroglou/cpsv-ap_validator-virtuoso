@@ -2,6 +2,7 @@ PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
@@ -17,15 +18,15 @@ GRAPH <@@@TOKEN-GRAPH@@@> {
 # Rule_ID:0
   {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
    WHERE {
-     ?s a foaf:Agent.
-     FILTER(!EXISTS {?s foaf:name ?name}).
+     ?s a locn:Address.
+     FILTER(!EXISTS {?s locn:fullAddress ?fulla}).
      BIND (rdf:type AS ?p).
-     BIND (foaf:Agent AS ?o).
-     BIND ("Agent" AS ?Class_Name).
+     BIND (locn:Address AS ?o).
+     BIND ("Address" AS ?Class_Name).
      BIND (0 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("foaf:name is a required property for Agent." AS ?Rule_Description).
-     BIND (concat("The agent  ",str(?o)," does not have a foaf:name property.") AS ?Message).
+     BIND ("locn:fullAddress is a required property for Address." AS ?Rule_Description).
+     BIND (concat("The address  ",str(?o)," does not have a locn:fullAddress property.") AS ?Message).
    }
   }
 
@@ -33,50 +34,270 @@ UNION
 # Rule_ID:1
   {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
    WHERE {
-     ?s a foaf:Agent.
-     ?s foaf:name ?o.
+     ?s a locn:Address.
+     ?s locn:fullAddress ?o
      FILTER(!isLiteral(?o)).
-     BIND (foaf:name AS ?p)
-     BIND ("Agent" AS ?Class_Name).
+     BIND (locn:fullAddress AS ?p)
+     BIND ("Address" AS ?Class_Name).
      BIND (1 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("The foaf:name property should be a literal." AS ?Rule_Description).
+     BIND ("The locn:fullAddress property should be a literal." AS ?Rule_Description).
      BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
    }
   }
 
 UNION
 # Rule_ID:2
-  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+  {SELECT ("Address" AS ?Class_Name) (2 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:fullAddress has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:fullAddress.") AS ?Message) ?s
    WHERE {
-     ?s a foaf:Agent.
-     FILTER(!EXISTS {?s dct:type ?type}).
-     BIND (rdf:type AS ?p).
-     BIND (foaf:Agent AS ?o).
-     BIND ("Agent" AS ?Class_Name).
-     BIND (2 AS ?Rule_ID).
-     BIND ("warning" AS ?Rule_Severity).
-     BIND ("dct:type is a recommended property for Agent." AS ?Rule_Description).
-     BIND (concat("The foaf:Agent ",str(?o)," does not have a dct:type property.") AS ?Message).
-   }
+     ?s a locn:Address.
+     ?s locn:fullAddress ?fulla.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
   }
 
 UNION
 # Rule_ID:3
-  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+  {SELECT ("Address" AS ?Class_Name) (3 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:addressArea has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:addressArea.") AS ?Message) ?s
    WHERE {
-     ?s a foaf:Agent.
-     ?s dct:type ?o.
-     ?o ?pred ?val.
-     FILTER(!EXISTS {?o a skos:Concept}).
-     BIND ("Agent" AS ?Class_Name).
-     BIND (3 AS ?Rule_ID).
+     ?s a locn:Address.
+     ?s locn:addressArea ?adda.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:4
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:addressArea ?o.
+     FILTER(!EXISTS {?o a rdfs:Literal}).
+     BIND ("Address" AS ?Class_Name).
+     BIND (4 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("dct:type should be a skos:Concept." AS ?Rule_Description).
-     BIND (concat("foaf:Agent ",str(?s)," does not have a dct:type property of type skos:Concept.") AS ?Message).
+     BIND ("The locn:addressArea property should be a literal." AS ?Rule_Description).
+     BIND (concat("The locn:addressArea ",str(?o)," is not a rdfs:Literal.") AS ?Message).
    }
   }
 
+UNION
+# Rule_ID:5
+  {SELECT ("Address" AS ?Class_Name) (5 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL1 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL1.") AS ?Message) ?s
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:adminUnitL1 ?unitL1.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:6
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:adminUnitL1 ?o.
+     FILTER(!EXISTS {?o a rdfs:Literal}).
+     BIND ("Address" AS ?Class_Name).
+     BIND (6 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:adminUnitL1 should be a rdfs:Literal." AS ?Rule_Description).
+     BIND (concat("The locn:adminUnitL1 ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+   }
+  }
+ 
+UNION
+# Rule_ID:7
+  {SELECT ("Address" AS ?Class_Name) (7 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL2 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL2.") AS ?Message) ?s
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:adminUnitL2 ?unitL2.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:8
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:adminUnitL2 ?o.
+     FILTER(!EXISTS {?o a rdfs:Literal}).
+     BIND ("Address" AS ?Class_Name).
+     BIND (8 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:adminUnitL2 should be a rdfs:Literal." AS ?Rule_Description).
+     BIND (concat("The locn:adminUnitL2 ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+   }
+  }
+ 
+UNION
+# Rule_ID:9
+  {SELECT ("Address" AS ?Class_Name) (9 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:locatorDesignator has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:locatorDesignator.") AS ?Message) ?s
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:locatorDesignator ?locad.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:10
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:locatorDesignator ?o.
+     FILTER(!EXISTS {?o a rdfs:Literal}).
+     BIND ("Address" AS ?Class_Name).
+     BIND (10 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:locatorDesignator should be a rdfs:Literal." AS ?Rule_Description).
+     BIND (concat("The locn:locatorDesignator ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:11
+  {SELECT ("Address" AS ?Class_Name) (11 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:locatorName has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:locatorName.") AS ?Message) ?s
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:locatorName ?locan.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:12
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:locatorName ?o.
+     FILTER(!EXISTS {?o a rdfs:Literal}).
+     BIND ("Address" AS ?Class_Name).
+     BIND (12 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:locatorName should be a rdfs:Literal." AS ?Rule_Description).
+     BIND (concat("The locn:locatorName ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:13
+  {SELECT ("Address" AS ?Class_Name) (13 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:poBox has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:poBox.") AS ?Message) ?s
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:poBox ?pobox.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:14
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:poBox ?o.
+     FILTER(!EXISTS {?o a rdfs:Literal}).
+     BIND ("Address" AS ?Class_Name).
+     BIND (14 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:poBox should be a rdfs:Literal." AS ?Rule_Description).
+     BIND (concat("The locn:poBox ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:15
+  {SELECT ("Address" AS ?Class_Name) (15 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:postCode has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:postCode.") AS ?Message) ?s
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:postCode ?postc.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:16
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:postCode ?o.
+     FILTER(!EXISTS {?o a rdfs:Literal}).
+     BIND ("Address" AS ?Class_Name).
+     BIND (16 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:postCode should be a rdfs:Literal." AS ?Rule_Description).
+     BIND (concat("The locn:postCode ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:17
+  {SELECT ("Address" AS ?Class_Name) (17 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:postName has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:postName.") AS ?Message) ?s
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:postName ?postn.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:18
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:postName ?o.
+     FILTER(!EXISTS {?o a rdfs:Literal}).
+     BIND ("Address" AS ?Class_Name).
+     BIND (18 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:postName should be a rdfs:Literal." AS ?Rule_Description).
+     BIND (concat("The locn:postName ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:19
+  {SELECT ("Address" AS ?Class_Name) (19 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:thoroughfare has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:thoroughfare.") AS ?Message) ?s
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:thoroughfare ?fare.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:20
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:thoroughfare ?o.
+     FILTER(!EXISTS {?o a rdfs:Literal}).
+     BIND ("Address" AS ?Class_Name).
+     BIND (20 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:thoroughfare should be a rdfs:Literal." AS ?Rule_Description).
+     BIND (concat("The locn:thoroughfare ",str(?o)," is not a rdfs:Literal.") AS ?Message).
+   }
+  }
+  
+# UNION
+# # Rule_ID:3
+  # {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+   # WHERE {
+     # ?s a foaf:Agent.
+     # ?s dct:type ?o.
+     # ?o ?pred ?val.
+     # FILTER(!EXISTS {?o a skos:Concept}).
+     # BIND ("Agent" AS ?Class_Name).
+     # BIND (3 AS ?Rule_ID).
+     # BIND ("error" AS ?Rule_Severity).
+     # BIND ("dct:type should be a skos:Concept." AS ?Rule_Description).
+     # BIND (concat("foaf:Agent ",str(?s)," does not have a dct:type property of type skos:Concept.") AS ?Message).
+   # }
+  # }
+
+  
 
 }
 }
