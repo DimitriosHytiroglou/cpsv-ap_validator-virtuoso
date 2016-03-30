@@ -30,7 +30,7 @@
 	<http://www.w3.org/ns/locn#adminUnitL2> "Brussels" ;
 	<http://www.w3.org/ns/locn#locatorDesignator> "50" ;
 	<http://www.w3.org/ns/locn#postCode> "1000" ;
-	<http://www.w3.org/ns/locn#postName> "Brussels" .
+	<http://www.w3.org/ns/locn#postName> <Brussels> .
 
 <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> a foaf:Agent ;
 	cv:hasRole <http://europa.eu/youreurope/businessOntology#start-grow/intellectual-property-rights/European-Patent-National-Validation> ;
@@ -79,7 +79,7 @@
 	
 <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#cost/paper-22> a cv:Cost ;
 	cv:isDefinedBy <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> ;
-	cv:monetary_value "324,14"^^xsd:decimal ;
+	cv:monetary_value "324,14"^^xsd:double ;
 	cv:currency <http://publications.europa.eu/resource/authority/currency/EUR> ;
 	dct:description "Fee to pay when the traduction is only delivered in paper form, until 22 pages" .
 
