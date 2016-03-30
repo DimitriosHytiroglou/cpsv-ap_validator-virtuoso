@@ -950,6 +950,152 @@ UNION
      HAVING (COUNT( ?s) > 1)
   }
 
+UNION
+# Rule_ID:69
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p
+   WHERE {
+     ?s a org:FormalOrganization.
+     FILTER(!EXISTS {?s dct:title ?name}).
+     BIND (dct:title AS ?p).
+     BIND ("FormalOrganization" AS ?Class_Name).
+     BIND (69 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:title is a required property for Formal Organization." AS ?Rule_Description).
+     BIND (concat("The org:FormalOrganization  ",str(?s)," does not have a dct:title property.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:70
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a org:FormalOrganization.
+	 ?s dct:title ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:title AS ?p).
+     BIND ("FormalOrganization" AS ?Class_Name).
+     BIND (70 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:title property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:71
+  {SELECT ("FormalOrganization" AS ?Class_Name) (71 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:title has maximum cardinality of 1 for Formal Organization." AS ?Rule_Description) (concat("The org:FormalOrganization ",str(?s)," has more than 1 dct:title.") AS ?Message) ?s (dct:title AS ?p) (sample(?name) AS ?o)
+   WHERE {
+     ?s a org:FormalOrganization.
+     ?s dct:title ?name.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:72
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+   WHERE {
+     ?s a org:FormalOrganization.
+     ?s dct:type ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND ("FormalOrganization" AS ?Class_Name).
+     BIND (72 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:type should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("org:FormalOrganization ",str(?s)," does not have a dct:type property of type skos:Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:73
+  {SELECT ("FormalOrganization" AS ?Class_Name) (73 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for FormalOrganization." AS ?Rule_Description) (concat("The org:FormalOrganization ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s (dct:type AS ?p) (sample(?type) AS ?o)
+   WHERE {
+     ?s a org:FormalOrganization.
+     ?s dct:type ?type.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:74
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+   WHERE {
+     ?s a org:FormalOrganization.
+     ?s cv:AdministrativeLevel ?o.
+     ?o ?pred ?adlev.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND ("FormalOrganization" AS ?Class_Name).
+     BIND (74 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:AdministrativeLevel should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("org:FormalOrganization ",str(?s)," does not have a cv:AdministrativeLevel property of type skos:Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:75
+  {SELECT ("FormalOrganization" AS ?Class_Name) (75 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:AdministrativeLevel has maximum cardinality of 1 for Formal Organization." AS ?Rule_Description) (concat("The org:FormalOrganization ",str(?s)," has more than 1 cv:AdministrativeLevel.") AS ?Message) ?s (cv:AdministrativeLevel AS ?p) (sample(?adlev) AS ?o)
+   WHERE {
+     ?s a org:FormalOrganization.
+     ?s cv:AdministrativeLevel ?adlev.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:76
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a org:FormalOrganization.
+	 ?s foaf:name ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (foaf:name AS ?p).
+     BIND ("FormalOrganization" AS ?Class_Name).
+     BIND (76 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The foaf:name property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:77
+  {SELECT ("FormalOrganization" AS ?Class_Name) (77 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("foaf:name has maximum cardinality of 1 for Formal Organization." AS ?Rule_Description) (concat("The org:FormalOrganization ",str(?s)," has more than 1 foaf:name.") AS ?Message) ?s (foaf:name AS ?p) (sample(?alname) AS ?o)
+   WHERE {
+     ?s a org:FormalOrganization.
+     ?s foaf:name ?alname.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:78
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a org:FormalOrganization.
+	 ?s foaf:homepage ?o.
+     FILTER(!isURI(?o)).
+     BIND (foaf:homepage AS ?p).
+     BIND ("FormalOrganization" AS ?Class_Name).
+     BIND (78 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The foaf:homepage property should be a URI." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a URI.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:79
+  {SELECT ("FormalOrganization" AS ?Class_Name) (79 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("foaf:homepage has maximum cardinality of 1 for Formal Organization." AS ?Rule_Description) (concat("The org:FormalOrganization ",str(?s)," has more than 1 foaf:homepage.") AS ?Message) ?s (foaf:homepage AS ?p) (sample(?hom) AS ?o)
+   WHERE {
+     ?s a org:FormalOrganization.
+     ?s foaf:homepage ?hom.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+  
   
 UNION
 # Rule_ID:112
