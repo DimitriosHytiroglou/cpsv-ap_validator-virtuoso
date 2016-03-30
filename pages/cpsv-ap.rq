@@ -1204,7 +1204,60 @@ UNION
      HAVING (COUNT( ?s) > 1)
   }
 
+UNION
+# Rule_ID:88
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a dct:Location.
+	 ?s locn:GeographicName ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (locn:GeographicName AS ?p).
+     BIND ("Location" AS ?Class_Name).
+     BIND (88 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The locn:GeographicName property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:89
+  {SELECT ("Location" AS ?Class_Name) (89 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:GeographicName has maximum cardinality of 1 for Location." AS ?Rule_Description) (concat("The dct:Location ",str(?s)," has more than 1 locn:GeographicName.") AS ?Message) ?s (locn:GeographicName AS ?p) (sample(?name) AS ?o)
+   WHERE {
+     ?s a dct:Location.
+     ?s locn:GeographicName ?name.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
 
+UNION
+# Rule_ID:90
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+   WHERE {
+     ?s a dct:Location.
+     ?s locn:address ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a locn:Address}).
+     BIND ("Location" AS ?Class_Name).
+     BIND (90 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:address should be a locn:Address." AS ?Rule_Description).
+     BIND (concat("dct:Location ",str(?s)," does not have a locn:address property of type locn:Address.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:91
+  {SELECT ("Location" AS ?Class_Name) (91 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:address has maximum cardinality of 1 for Location." AS ?Rule_Description) (concat("The dct:Location ",str(?s)," has more than 1 locn:address.") AS ?Message) ?s (locn:address AS ?p) (sample(?add) AS ?o)
+   WHERE {
+     ?s a dct:Location.
+     ?s locn:address ?add.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+  
+  
+  
   
 UNION
 # Rule_ID:112

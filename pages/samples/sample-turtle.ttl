@@ -15,14 +15,14 @@
 @prefix cv: <http://data.europa.eu/cv/> .
 
 
-<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Address/OEPM> a <http://www.w3.org/ns/locn#Address> ;
-	<http://www.w3.org/ns/locn#fullAddress> "Paseo de la Castellana, n° 75, 28071 Madrid" ;
-	<http://www.w3.org/ns/locn#addressArea> "Madrid" ;
-	<http://www.w3.org/ns/locn#adminUnitL1> "http://publications.europa.eu/resource/authority/country/ESP" ;
-	<http://www.w3.org/ns/locn#adminUnitL2> "Madrid" ;
-	<http://www.w3.org/ns/locn#locatorDesignator> "75" ;
-	<http://www.w3.org/ns/locn#postCode> "28071" ;
-	<http://www.w3.org/ns/locn#postName> "Madrid" .
+# <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Address/OEPM> a <http://www.w3.org/ns/locn#Address> ;
+	# <http://www.w3.org/ns/locn#fullAddress> "Paseo de la Castellana, n° 75, 28071 Madrid" ;
+	# <http://www.w3.org/ns/locn#addressArea> "Madrid" ;
+	# <http://www.w3.org/ns/locn#adminUnitL1> "http://publications.europa.eu/resource/authority/country/ESP" ;
+	# <http://www.w3.org/ns/locn#adminUnitL2> "Madrid" ;
+	# <http://www.w3.org/ns/locn#locatorDesignator> "75" ;
+	# <http://www.w3.org/ns/locn#postCode> "28071" ;
+	# <http://www.w3.org/ns/locn#postName> "Madrid" .
 
 <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Address> a <http://www.w3.org/ns/locn#Address> ;
 	<http://www.w3.org/ns/locn#fullAddress> "Bvd Jardin botanique 50 (étage 18 R boîte 3626) 1000 Bruxelles - BELGIQUE " ;
@@ -122,10 +122,14 @@
 
 <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Input/tpede> a cv:Input ;
 	dct:title "TPEDE form duly filled in" ;
-	foaf:page <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> .
+	foaf:page "http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html" .
 
 <http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:314:0050:0059:en:PDF#refund-claim> a cv:Input ;
 	dct:title "Refund claim" ;
 	dct:description "Claim to applicate the VAT refund. The claim is only considered submitted when the information in Articles 8, 9, and 11 are complete" .
+	
+<http://publications.europa.eu/resource/authority/country/ESP> a dct:Location ;
+	locn:GeographicName "Spain" ;
+	locn:address <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Address/OEPM> .
 	
 	
