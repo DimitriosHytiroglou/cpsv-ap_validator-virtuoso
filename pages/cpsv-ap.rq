@@ -339,7 +339,7 @@ UNION
    WHERE {
      ?s a foaf:Agent.
      ?s dct:type ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND ("Agent" AS ?Class_Name).
      BIND (24 AS ?Rule_ID).
@@ -365,7 +365,7 @@ UNION
    WHERE {
      ?s a foaf:Agent.
      ?s cv:hasRole ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND ("Agent" AS ?Class_Name).
      BIND (26 AS ?Rule_ID).
@@ -391,7 +391,7 @@ UNION
    WHERE {
      ?s a foaf:Agent.
      ?s cv:uses ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND ("Agent" AS ?Class_Name).
      BIND (28 AS ?Rule_ID).
@@ -417,7 +417,7 @@ UNION
    WHERE {
      ?s a foaf:Agent.
      ?s locn:address ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a locn:Address}).
      BIND ("Agent" AS ?Class_Name).
      BIND (30 AS ?Rule_ID).
@@ -667,7 +667,7 @@ UNION
    WHERE {
      ?s a cv:Cost.
      ?s cv:monetary_value ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a xsd:decimal}).
      BIND (cv:monetary_value AS ?p).
      BIND ("Cost" AS ?Class_Name).
@@ -997,7 +997,7 @@ UNION
    WHERE {
      ?s a org:FormalOrganization.
      ?s dct:type ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND ("FormalOrganization" AS ?Class_Name).
      BIND (72 AS ?Rule_ID).
@@ -1158,7 +1158,7 @@ UNION
    WHERE {
      ?s a cv:Input.
      ?s dct:type ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND ("Input" AS ?Class_Name).
      BIND (84 AS ?Rule_ID).
@@ -1236,7 +1236,7 @@ UNION
    WHERE {
      ?s a dct:Location.
      ?s locn:address ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?val a locn:Address}).
      BIND ("Location" AS ?Class_Name).
      BIND (90 AS ?Rule_ID).
@@ -1329,7 +1329,7 @@ UNION
    WHERE {
      ?s a cv:Output.
      ?s dct:type ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND ("Output" AS ?Class_Name).
      BIND (97 AS ?Rule_ID).
@@ -1478,7 +1478,7 @@ UNION
    WHERE {
      ?s a cv:PublicOrganisation.
      ?s dct:type ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND ("PublicOrganisation" AS ?Class_Name).
      BIND (108 AS ?Rule_ID).
@@ -1712,7 +1712,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s cv:sector ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (125 AS ?Rule_ID).
@@ -1728,7 +1728,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s dct:type ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a skos:Concept}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (126 AS ?Rule_ID).
@@ -1744,7 +1744,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s dct:isPartOf ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:BusinessEvent}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (127 AS ?Rule_ID).
@@ -1760,7 +1760,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s cv:hasChannel ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:Channel}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (128 AS ?Rule_ID).
@@ -1776,7 +1776,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s cv:hasCost ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:Cost}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (129 AS ?Rule_ID).
@@ -1792,7 +1792,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s cv:physicallyAvailableAt ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a dct:Location}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (130 AS ?Rule_ID).
@@ -1818,7 +1818,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s dct:spatial ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a dct:Location}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (132 AS ?Rule_ID).
@@ -1844,7 +1844,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s dct:requires ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:PublicService}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (134 AS ?Rule_ID).
@@ -1860,7 +1860,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s dct:relation ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:PublicService}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (135 AS ?Rule_ID).
@@ -1891,7 +1891,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s cv:hasInput ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:Input}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (137 AS ?Rule_ID).
@@ -1907,7 +1907,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s cv:produces ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:Output}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (138 AS ?Rule_ID).
@@ -1923,7 +1923,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s cv:follows ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:Rule}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (139 AS ?Rule_ID).
@@ -1939,7 +1939,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s dct:temporal ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a dct:PeriodOfTime}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (140 AS ?Rule_ID).
@@ -1955,7 +1955,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s cv:hasFormalFramework ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:FormalFramework}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (141 AS ?Rule_ID).
@@ -1996,7 +1996,7 @@ UNION
    WHERE {
      ?s a cv:PublicService.
      ?s cv:hasCompetentAuthority ?o.
-     ?o ?pred ?val.
+     ?o ?p ?val.
      FILTER(!EXISTS {?o a cv:PublicOrganisation}).
      BIND ("PublicService" AS ?Class_Name).
      BIND (144 AS ?Rule_ID).
