@@ -28,7 +28,7 @@ GRAPH <@@@TOKEN-GRAPH@@@> {
      BIND (0 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
      BIND ("locn:fullAddress is a required property for Address." AS ?Rule_Description).
-     BIND (concat("The address  ",str(?o)," does not have a locn:fullAddress property.") AS ?Message).
+     BIND (concat("The address  ",str(?s)," does not have a locn:fullAddress property.") AS ?Message).
    }
   }
 
@@ -303,7 +303,7 @@ UNION
      BIND (21 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
      BIND ("dct:title is a required property for Agent." AS ?Rule_Description).
-     BIND (concat("The agent  ",str(?o)," does not have a dct:title property.") AS ?Message).
+     BIND (concat("The foaf:Agent ",str(?s)," does not have a dct:title property.") AS ?Message).
    }
   }
 
@@ -448,7 +448,7 @@ UNION
      BIND (32 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
      BIND ("dct:title is a required property for BusinessEvent." AS ?Rule_Description).
-     BIND (concat("The cv:BusinessEvent ",str(?o)," does not have a dct:title property.") AS ?Message).
+     BIND (concat("The cv:BusinessEvent ",str(?s)," does not have a dct:title property.") AS ?Message).
    }
   }
 
@@ -726,7 +726,7 @@ UNION
      BIND (52 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
      BIND ("eli:id_local is a required property for FormalFramework." AS ?Rule_Description).
-     BIND (concat("The cv:FormalFramework ",str(?o)," does not have a eli:id_local property.") AS ?Message).
+     BIND (concat("The cv:FormalFramework ",str(?s)," does not have a eli:id_local property.") AS ?Message).
    }
   }
 
