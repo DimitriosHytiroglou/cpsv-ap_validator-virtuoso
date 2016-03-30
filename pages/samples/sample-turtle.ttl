@@ -38,7 +38,7 @@
 	<http://www.w3.org/ns/locn#address> <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Address/OEPM> ;
 	a org:FormalOrganization .
 	# dct:title "OEPM" ;
-	# a cpsvap:PublicOrganisation .
+	a cv:PublicOrganisation .
 
 <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#MS/Belgium> a foaf:Agent ;
 	cv:hasRole <http://europa.eu/youreurope/businessOntology#vat-customs/buy-sell/VAT-Return> ;
@@ -131,5 +131,20 @@
 <http://publications.europa.eu/resource/authority/country/ESP> a dct:Location ;
 	locn:GeographicName "Spain" ;
 	locn:address <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Address/OEPM> .
-	
+
+<http://europa.eu/youreurope/businessOntology#vat-customs/buy-sell/VAT-Return> a cv:PublicService ;
+	dct:title "VAT refund in Belgium" ;
+	dct:description "If you are charged VAT on business activities in an EU country where you are not established, you may be entitled to have it refunded by the authorities in that country." ;
+	dct:language <http://publications.europa.eu/resource/authority/language/FRA> ;
+	cv:physicallyAvailableAt <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Address> ;
+	cv:follows <http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:044:0023:0028:en:PDF#Article/9-1> ;
+	cv:hasChannel <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#Channel/Telephone> ;
+	# cv:hasInput <http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:314:0050:0059:en:PDF#refund-claim> ;
+	cv:hasCompetentAuthority <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#MS/Belgium> ;
+	dct:isPartOf <http://europa.eu/youreurope/businessOntology#vat-customs> ;
+	dct:language <http://publications.europa.eu/resource/authority/language/NLD> ;
+	cv:hasChannel <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#Channel/Fax> ;
+	cv:follows <http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:044:0023:0028:en:PDF#Article/8> ;
+	cv:hasChannel <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#Channel/Email> ;
+	cv:follows <http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:044:0023:0028:en:PDF#Article/11> .	
 	
