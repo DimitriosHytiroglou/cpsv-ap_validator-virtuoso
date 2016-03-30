@@ -1232,12 +1232,12 @@ UNION
 
 UNION
 # Rule_ID:90
-  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
    WHERE {
      ?s a dct:Location.
      ?s locn:address ?o.
      ?o ?pred ?val.
-     FILTER(!EXISTS {?o a locn:Address}).
+     FILTER(!EXISTS {?val a locn:Address}).
      BIND ("Location" AS ?Class_Name).
      BIND (90 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
@@ -1252,6 +1252,99 @@ UNION
    WHERE {
      ?s a dct:Location.
      ?s locn:address ?add.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:92
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p
+   WHERE {
+     ?s a cv:Output.
+     FILTER(!EXISTS {?s dct:title ?name}).
+     BIND (dct:title AS ?p).
+     BIND ("Output" AS ?Class_Name).
+     BIND (92 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:title is a required property for Output." AS ?Rule_Description).
+     BIND (concat("The cv:Output ",str(?s)," does not have a dct:title property.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:93
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Output.
+	 ?s dct:title ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:title AS ?p).
+     BIND ("Output" AS ?Class_Name).
+     BIND (93 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:title property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:94
+  {SELECT ("Output" AS ?Class_Name) (94 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:title has maximum cardinality of 1 for Output." AS ?Rule_Description) (concat("The cv:Output ",str(?s)," has more than 1 dct:title.") AS ?Message) ?s (dct:title AS ?p) (sample(?name) AS ?o)
+   WHERE {
+     ?s a cv:Output.
+     ?s dct:title ?name.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+  
+UNION
+# Rule_ID:95
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Output.
+     ?s dct:description ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:description AS ?p).
+     BIND ("Output" AS ?Class_Name).
+     BIND (95 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:description property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }
+  
+UNION
+# Rule_ID:96
+  {SELECT ("Output" AS ?Class_Name) (96 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:description has maximum cardinality of 1 for Output." AS ?Rule_Description) (concat("The cv:Output ",str(?s)," has more than 1 dct:description.") AS ?Message) ?s (dct:description AS ?p) (sample(?desc) AS ?o)
+   WHERE {
+     ?s a cv:Output.
+     ?s dct:description ?desc.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:97
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+   WHERE {
+     ?s a cv:Output.
+     ?s dct:type ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND ("Output" AS ?Class_Name).
+     BIND (97 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:type should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("cv:Output ",str(?s)," does not have a dct:type property of type skos:Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:98
+  {SELECT ("Output" AS ?Class_Name) (98 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for Output." AS ?Rule_Description) (concat("The cv:Output ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s (dct:type AS ?p) (sample(?type) AS ?o)
+   WHERE {
+     ?s a cv:Output.
+     ?s dct:type ?type.
    } GROUP BY ?s 
      HAVING (COUNT( ?s) > 1)
   }
