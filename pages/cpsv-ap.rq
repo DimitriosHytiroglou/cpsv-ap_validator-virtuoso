@@ -794,7 +794,7 @@ UNION
      ?s eli:language ?o.
      ?o ?pred ?lan.
      FILTER(!EXISTS {?o a eli:Language}).
-     BIND (deli:language AS ?p).
+     BIND (eli:language AS ?p).
      BIND ("FormalFramework" AS ?Class_Name).
      BIND (57 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
