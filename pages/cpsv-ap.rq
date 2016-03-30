@@ -596,7 +596,7 @@ UNION
 
 UNION
 # Rule_ID:43
-  {SELECT ("Channel" AS ?Class_Name) (43 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for cv:Channel." AS ?Rule_Description) (concat("The cv:Channel ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s (rdf:type AS ?p) (cv:Channel AS ?o)
+  {SELECT ("Channel" AS ?Class_Name) (43 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for cv:Channel." AS ?Rule_Description) (concat("The cv:Channel ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s (dct:type AS ?p) (sample(?type) AS ?o)
    WHERE {
      ?s a cv:Channel.
      ?s dct:type ?type.
@@ -973,7 +973,7 @@ UNION
 
 UNION
 # Rule_ID:68
-  {SELECT ("FormalFramework" AS ?Class_Name) (68 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:relation has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 dct:relation.") AS ?Message) ?s (dct:relation AS ?p) (cv:FormalFramework AS ?o)
+  {SELECT ("FormalFramework" AS ?Class_Name) (68 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:relation has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 dct:relation.") AS ?Message) ?s (dct:relation AS ?p) (sample(?rela) AS ?o)
    WHERE {
      ?s a cv:FormalFramework.
      ?s dct:relation ?rela.
