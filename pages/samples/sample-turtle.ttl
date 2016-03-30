@@ -97,3 +97,17 @@
 
 <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#cost/digital-more22> a cv:Cost ;
 	cv:isDefinedBy <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> ;
+	cv:monetary_value "11,08"^^xsd:decimal ;
+	cv:currency <http://publications.europa.eu/resource/authority/currency/EUR> ;
+	dct:description "Fee to pay when the traduction is delivered online, in paper form and in CD, from the 23th page" .
+	
+<http://www.epo.org/law-practice/legal-texts/html/epc/2013/e/ma1.html> a cv:FormalFramework ;
+	dct:creator <http://www.epo.org/law-practice/legal-texts/html/epc/2013/e/ar2.html> ;
+	eli:id_local "European Patent Convention" ;
+	dct:description """Convention on the Grant of European Patents (European Patent Convention) of 5 October 1973 as revised by the Act revising Article 63 EPC of 17 December 1991 and the Act revising the EPC of 29 November 2000""" ;
+	eli:language <http://publications.europa.eu/resource/authority/language/ENG> .
+
+<http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:044:0023:0028:en:PDF> a cv:FormalFramework ;
+	eli:id_local "Directive 2008/9/EC" ;
+	dct:description """COUNCIL DIRECTIVE 2008/9/EC of 12 February 2008 laying down detailed rules for the refund of value added tax, provided for in Directive 2006/112/EC, to taxable persons not established in the Member State of refund but established in another Member State""" ;
+	eli:language <http://publications.europa.eu/resource/authority/language/ENG> .

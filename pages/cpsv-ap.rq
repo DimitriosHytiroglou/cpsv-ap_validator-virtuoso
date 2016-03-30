@@ -37,7 +37,7 @@ UNION
   {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
    WHERE {
      ?s a locn:Address.
-     ?s locn:fullAddress ?o
+     ?s locn:fullAddress ?o.
      FILTER(!isLiteral(?o)).
      BIND (locn:fullAddress AS ?p)
      BIND ("Address" AS ?Class_Name).
@@ -625,7 +625,7 @@ UNION
   {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
    WHERE {
 	 ?s a cv:Cost.
-     ?s dct:description ?o
+     ?s dct:description ?o.
      FILTER(!isLiteral(?o)).
      BIND (dct:description AS ?p).
      BIND ("Cost" AS ?Class_Name).
@@ -716,6 +716,270 @@ UNION
    } GROUP BY ?s 
      HAVING (COUNT( ?s) > 1)
   }
+
+UNION
+# Rule_ID:52
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     FILTER(!EXISTS {?s eli:id_local ?name}).
+     BIND (eli:id_local AS ?p).
+     BIND (cv:FormalFramework AS ?o).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (52 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("eli:id_local is a required property for FormalFramework." AS ?Rule_Description).
+     BIND (concat("The cv:FormalFramework ",str(?o)," does not have a eli:id_local property.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:53
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:id_local ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (eli:id_local AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (53 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The eli:id_local property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
+  
+UNION
+# Rule_ID:54
+  {SELECT ("FormalFramework" AS ?Class_Name) (54 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("eli:id_local has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 eli:id_local.") AS ?Message) ?s (eli:id_local AS ?p) (cv:FormalFramework AS ?o)
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:id_local ?name.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:55
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s dct:description ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:description AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (55 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:description property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }
+  
+UNION
+# Rule_ID:56
+  {SELECT ("FormalFramework" AS ?Class_Name) (56 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:description has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 dct:description.") AS ?Message) ?s (dct:description AS ?p) (cv:FormalFramework AS ?o)
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s dct:description ?desc.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:57
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:language ?o.
+     ?o ?pred ?lan.
+     FILTER(!EXISTS {?o a eli:Language}).
+     BIND (deli:language AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (57 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("eli:language should be a eli:Language." AS ?Rule_Description).
+     BIND (concat("cv:FormalFramework ",str(?s)," does not have a eli:language property of type eli:Language.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:58
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s adms:adms-status ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (adms:adms-status AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (58 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The adms:adms-status property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }
+  
+UNION
+# Rule_ID:59
+  {SELECT ("FormalFramework" AS ?Class_Name) (59 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("adms:adms-status has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 adms:adms-status.") AS ?Message) ?s (adms:adms-status AS ?p) (cv:FormalFramework AS ?o)
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s adms:adms-status ?sta.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:60
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:is_about ?o.
+     ?o ?pred ?sub.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND (eli:is_about AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (60 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("eli:is_about should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("cv:FormalFramework ",str(?s)," does not have a eli:is_about property of type skos:Concept.") AS ?Message).
+   }
+  }
+  
+UNION
+# Rule_ID:61
+  {SELECT ("FormalFramework" AS ?Class_Name) (61 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("eli:is_about has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 eli:is_about.") AS ?Message) ?s (eli:is_about AS ?p) (cv:FormalFramework AS ?o)
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:is_about ?sub.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:62
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:relevant_for ?o.
+     ?o ?pred ?terr.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND (eli:relevant_for AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (62 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("eli:relevant_for should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("cv:FormalFramework ",str(?s)," does not have a eli:relevant_for property of type skos:Concept.") AS ?Message).
+   }
+  }
+  
+UNION
+# Rule_ID:63
+  {SELECT ("FormalFramework" AS ?Class_Name) (63 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("eli:relevant_for has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 eli:relevant_for.") AS ?Message) ?s (eli:relevant_for AS ?p) (cv:FormalFramework AS ?o)
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:relevant_for ?terr.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:62
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:relevant_for ?o.
+     ?o ?pred ?terr.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND (eli:relevant_for AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (62 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("eli:relevant_for should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("cv:FormalFramework ",str(?s)," does not have a eli:relevant_for property of type skos:Concept.") AS ?Message).
+   }
+  }
+  
+UNION
+# Rule_ID:63
+  {SELECT ("FormalFramework" AS ?Class_Name) (63 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("eli:relevant_for has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 eli:relevant_for.") AS ?Message) ?s (eli:relevant_for AS ?p) (cv:FormalFramework AS ?o)
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:relevant_for ?terr.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:64
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:type_document ?o.
+     ?o ?pred ?tdoc.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND (eli:type_document AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (64 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("eli:type_document should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("cv:FormalFramework ",str(?s)," does not have a eli:type_document property of type skos:Concept.") AS ?Message).
+   }
+  }
+  
+UNION
+# Rule_ID:65
+  {SELECT ("FormalFramework" AS ?Class_Name) (65 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("eli:type_document has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 eli:type_document.") AS ?Message) ?s (eli:type_document AS ?p) (cv:FormalFramework AS ?o)
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:type_document ?tdoc.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:66
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s dct:creator ?o.
+     ?o ?pred ?crea.
+     FILTER(!EXISTS {?o a org:FormalOrganization}).
+     BIND (dct:creator AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (66 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:creator should be a org:FormalOrganization." AS ?Rule_Description).
+     BIND (concat("cv:FormalFramework ",str(?s)," does not have a dct:creator property of type org:FormalOrganization.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:67
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s dct:relation ?o.
+     ?o ?pred ?rela.
+     FILTER(!EXISTS {?o a org:FormalOrganization}).
+     BIND (dct:relation AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (67 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:relation should be a cv:FormalFramework." AS ?Rule_Description).
+     BIND (concat("cv:FormalFramework ",str(?s)," does not have a dct:relation property of type cv:FormalFramework.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:68
+  {SELECT ("FormalFramework" AS ?Class_Name) (68 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:relation has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 dct:relation.") AS ?Message) ?s (dct:relation AS ?p) (cv:FormalFramework AS ?o)
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s dct:relation ?rela.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
   
 UNION
 # Rule_ID:112
