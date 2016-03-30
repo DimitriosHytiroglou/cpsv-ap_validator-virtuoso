@@ -1095,7 +1095,116 @@ UNION
      HAVING (COUNT( ?s) > 1)
   }
 
+UNION
+# Rule_ID:80
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p
+   WHERE {
+     ?s a cv:Input.
+     FILTER(!EXISTS {?s dct:title ?name}).
+     BIND (dct:title AS ?p).
+     BIND ("Input" AS ?Class_Name).
+     BIND (80 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:title is a required property for Input." AS ?Rule_Description).
+     BIND (concat("The cv:Input ",str(?s)," does not have a dct:title property.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:81
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Input.
+	 ?s dct:title ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:title AS ?p).
+     BIND ("Input" AS ?Class_Name).
+     BIND (81 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:title property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }  
   
+UNION
+# Rule_ID:82
+  {SELECT ("Input" AS ?Class_Name) (82 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:title has maximum cardinality of 1 for Input." AS ?Rule_Description) (concat("The cv:Input ",str(?s)," has more than 1 dct:title.") AS ?Message) ?s (dct:title AS ?p) (sample(?name) AS ?o)
+   WHERE {
+     ?s a cv:Input.
+     ?s dct:title ?name.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:83
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Input.
+	 ?s foaf:page ?o.
+     FILTER(!isURI(?o)).
+     BIND (foaf:page AS ?p).
+     BIND ("Input" AS ?Class_Name).
+     BIND (83 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The foaf:page property should be a URI." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a URI.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:84
+  {SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+   WHERE {
+     ?s a cv:Input.
+     ?s dct:type ?o.
+     ?o ?pred ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND ("Input" AS ?Class_Name).
+     BIND (84 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:type should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("cv:Input ",str(?s)," does not have a dct:type property of type skos:Concept.") AS ?Message).
+   }
+  }
+
+UNION
+# Rule_ID:85
+  {SELECT ("Input" AS ?Class_Name) (85 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for Input." AS ?Rule_Description) (concat("The cv:Input ",str(?s)," has more than 1 dct:type.") AS ?Message) ?s (dct:type AS ?p) (sample(?type) AS ?o)
+   WHERE {
+     ?s a cv:Input.
+     ?s dct:type ?type.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+UNION
+# Rule_ID:86
+  {SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Input.
+     ?s dct:description ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:description AS ?p).
+     BIND ("Input" AS ?Class_Name).
+     BIND (86 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:description property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+  }
+  
+UNION
+# Rule_ID:87
+  {SELECT ("Input" AS ?Class_Name) (87 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:description has maximum cardinality of 1 for Input." AS ?Rule_Description) (concat("The cv:Input ",str(?s)," has more than 1 dct:description.") AS ?Message) ?s (dct:description AS ?p) (sample(?desc) AS ?o)
+   WHERE {
+     ?s a cv:Input.
+     ?s dct:description ?desc.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+  }
+
+
   
 UNION
 # Rule_ID:112

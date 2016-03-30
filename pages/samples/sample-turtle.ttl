@@ -42,10 +42,10 @@
 
 <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#MS/Belgium> a foaf:Agent ;
 	cv:hasRole <http://europa.eu/youreurope/businessOntology#vat-customs/buy-sell/VAT-Return> ;
-	dct:title "Bureau Central de TVA" ;
+	# dct:title "Bureau Central de TVA" ;
 	<http://www.w3.org/ns/locn#address> <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Address> ;
-	<http://www.w3.org/ns/locn#address> <wrongAddress> .
-	a org:FormalOrganization ;
+	<http://www.w3.org/ns/locn#address> <wrongAddress> ;
+	a org:FormalOrganization .
 	# dct:title "Centraal BTW-Kantoor" ;
 	# a cpsvap:PublicOrganisation .
 	
@@ -111,3 +111,21 @@
 	eli:id_local "Directive 2008/9/EC" ;
 	dct:description """COUNCIL DIRECTIVE 2008/9/EC of 12 February 2008 laying down detailed rules for the refund of value added tax, provided for in Directive 2006/112/EC, to taxable persons not established in the Member State of refund but established in another Member State""" ;
 	eli:language <http://publications.europa.eu/resource/authority/language/ENG> .
+	
+<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Input/proof-of-payment> a cv:Input ;
+	dct:title "Proof of payment" ;
+	foaf:page <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> .
+
+<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Input/patent-translation> a cv:Input ;
+	dct:title "Translation of the european patent" ;
+	foaf:page <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> .
+
+<http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Input/tpede> a cv:Input ;
+	dct:title "TPEDE form duly filled in" ;
+	foaf:page <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html> .
+
+<http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:314:0050:0059:en:PDF#refund-claim> a cv:Input ;
+	dct:title "Refund claim" ;
+	dct:description "Claim to applicate the VAT refund. The claim is only considered submitted when the information in Articles 8, 9, and 11 are complete" .
+	
+	
