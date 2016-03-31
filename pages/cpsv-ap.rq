@@ -366,7 +366,7 @@ UNION
      ?s a foaf:Agent.
      ?s cv:hasRole ?o.
      ?o ?p ?val.
-     FILTER(!EXISTS {?o a skos:Concept}).
+     FILTER(!EXISTS {?o a cv:PublicService}).
      BIND ("Agent" AS ?Class_Name).
      BIND (26 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
