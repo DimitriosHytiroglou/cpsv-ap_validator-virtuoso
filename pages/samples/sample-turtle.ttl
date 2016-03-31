@@ -36,7 +36,7 @@
 	cv:hasRole <http://europa.eu/youreurope/businessOntology#start-grow/intellectual-property-rights/European-Patent-National-Validation> ;
 	dct:title "Spanish patent and trademark office " ;
 	<http://www.w3.org/ns/locn#address> <http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#Address/OEPM> ;
-	a org:FormalOrganization ;
+	a org:FormalOrganization .
 	# dct:title "OEPM" ;
 	# a cv:PublicOrganisation .
 
