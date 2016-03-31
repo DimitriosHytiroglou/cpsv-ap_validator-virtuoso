@@ -1236,7 +1236,7 @@ UNION
      ?s a dct:Location.
      ?s locn:address ?o.
      ?o ?p ?val.
-     FILTER(!EXISTS {?val a locn:Address}).
+     FILTER(!EXISTS {?o a locn:Address}).
      BIND ("Location" AS ?Class_Name).
      BIND (90 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
