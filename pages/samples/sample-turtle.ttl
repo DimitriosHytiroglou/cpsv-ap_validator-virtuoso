@@ -136,7 +136,7 @@
 	dct:title "VAT refund in Belgium" ;
 	dct:description "If you are charged VAT on business activities in an EU country where you are not established, you may be entitled to have it refunded by the authorities in that country." ;
 	dct:language <http://publications.europa.eu/resource/authority/language/FRA> ;
-	cv:physicallyAvailableAt <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Address> ;
+	cv:physicallyAvailableAt <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Location> ;
 	cv:follows <http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:044:0023:0028:en:PDF#Article/9-1> ;
 	cv:hasChannel <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#Channel/Telephone> ;
 	# cv:hasInput <http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:314:0050:0059:en:PDF#refund-claim> ;
@@ -147,4 +147,6 @@
 	cv:follows <http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:044:0023:0028:en:PDF#Article/8> ;
 	cv:hasChannel <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#Channel/Email> ;
 	cv:follows <http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:044:0023:0028:en:PDF#Article/11> .	
-	
+
+<http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Location> a dct:Location ;
+	locn:address <http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/traders/vat_refunds/refund_contact_details_table_en.pdf#country/Belgium/Address> .
