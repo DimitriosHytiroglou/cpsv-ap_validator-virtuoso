@@ -123,7 +123,7 @@ URIs as hrefs in results : Bob DuCharme & Andy Seaborne
     -->
 
      <xsl:variable name="query">SELECT%20%28%3C<xsl:value-of select="$x"/>%3E%20AS%20%3Fsubject%29%20%3Fpredicate%20%3Fobject%20%7B%3C<xsl:value-of select="$x"/>%3E%20%3Fpredicate%20%3Fobject%20%7D</xsl:variable>
-    <a href="?query={$query}&amp;output=xml&amp;stylesheet=%2Fxml-to-html-dcat-ap.xsl" class="uri"><xsl:value-of select="."/></a>
+    <a href="?query={$query}&amp;output=xml&amp;stylesheet=%2Fxml-to-html-cpsv-ap.xsl" class="uri"><xsl:value-of select="."/></a>
   </xsl:template>
 
   <xsl:template match="res:literal[@datatype]">
@@ -165,14 +165,14 @@ URIs as hrefs in results : Bob DuCharme & Andy Seaborne
   <xsl:template match="res:sparql">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
       <head>
-	    <title>DCAT-AP Validator: SPARQL Query Result</title>
-		<link rel="stylesheet" type="text/css" href="/css/dcat-ap/min/dcat-ap_validator-results-min.css" />
+	    <title>CPSV-AP Validator: SPARQL Query Result</title>
+		<link rel="stylesheet" type="text/css" href="/css/cpsv-ap/min/cpsv-ap_validator-results-min.css" />
 		<!-- DataTables CSS -->
 		<link rel="stylesheet" type="text/css" href="/js/DataTables-1.10.7/media/css/jquery.dataTables.min.css" />
       </head>
       <body>
 	  <header class="banner">
-	  <a id="logobanner" href="#"><img src="/images/DCAT_application_profile_for_European_data_portals_logo_0.png" width="70" height="70" alt="Asset Description Metadata Schema for Software (ADMS.SW) logo" /><h1>DCAT-AP Validator: SPARQL Query Result</h1></a>
+	  <a id="logobanner" href="#"><img src="/images/CPSV-AP_logo.png" width="70" height="70" alt="CPSV-AP_logo" /><h1>CPSV-AP Validator: SPARQL Query Result</h1></a>
 	  </header>
 	  <p id="description">The table below displays all detected anomalies (if any).</p>
 
@@ -194,7 +194,7 @@ URIs as hrefs in results : Bob DuCharme & Andy Seaborne
 
 		<script type="text/javascript" charset="utf8" src="/js/DataTables-1.10.7/media/js/jquery.js"></script>
         <script type="text/javascript" src="/js/js-cookie/js-cookie.js"></script>
-		<script type="text/javascript" charset="utf8" src="/js/concat/dcat-results.js"></script>
+		<script type="text/javascript" charset="utf8" src="/js/concat/cpsv-results.js"></script>
       </body>
     </html>
   </xsl:template>
