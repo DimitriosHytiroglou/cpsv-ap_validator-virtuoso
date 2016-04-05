@@ -1,20 +1,12 @@
 # Rule_ID:2
-# @title [Agent] dct:type is a recommended property for Agent
-# @tag agent
+# @title [Address] The locn:Address ",str(?s)," has more than 1 locn:fullAddress
+# @tag address
 
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
-SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
-WHERE {
-  ?s a foaf:Agent.
-  FILTER(!EXISTS {?s dct:type ?type}).
-  BIND (rdf:type AS ?p).
-  BIND (foaf:Agent AS ?o).
-  BIND ("Agent" AS ?Class_Name).
-  BIND (2 AS ?Rule_ID).
-  BIND ("warning" AS ?Rule_Severity).
-  BIND ("dct:type is a recommended property for Agent." AS ?Rule_Description).
-  BIND (concat("The foaf:Agent ",str(?s)," does not have a dct:type property.") AS ?Message).
-}
+SELECT ("Address" AS ?Class_Name) (2 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:fullAddress has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:fullAddress.") AS ?Message) ?s (locn:fullAddress AS ?p) (sample(?fulla) AS ?o)
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:fullAddress ?fulla.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)

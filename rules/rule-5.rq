@@ -1,17 +1,12 @@
 # Rule_ID:5
-# @title [Catalog] dcat:dataset should be a dcat:Dataset
-# @tag catalog
+# @title [Address] The locn:Address ",str(?s)," has more than 1 locn:adminUnitL1
+# @tag Address
 
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
-SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
-WHERE {
-  ?s a dcat:Catalog.
-  ?s dcat:dataset ?o.
-  FILTER(!EXISTS {?o a dcat:Dataset}).
-  BIND ("Catalog" AS ?Class_Name).
-  BIND (5 AS ?Rule_ID).
-  BIND ("error" AS ?Rule_Severity).
-  BIND ("dcat:dataset should be a dcat:Dataset." AS ?Rule_Description).
-  BIND (concat("The dcat:Catalog ",str(?s)," has a ",str(?o)," which is not a dcat:Dataset") AS ?Message).
-}
+SELECT ("Address" AS ?Class_Name) (5 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL1 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL1.") AS ?Message) ?s (locn:adminUnitL1e AS ?p) (sample(?unitL1) AS ?o)
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:adminUnitL1 ?unitL1.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)

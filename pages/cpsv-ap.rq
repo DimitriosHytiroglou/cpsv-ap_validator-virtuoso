@@ -86,7 +86,7 @@ UNION
 
 UNION
 # Rule_ID:5
-  {SELECT ("Address" AS ?Class_Name) (5 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL1 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL1.") AS ?Message) ?s (rdf:type AS ?p) (locn:Address AS ?o)
+  {SELECT ("Address" AS ?Class_Name) (5 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL1 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL1.") AS ?Message) ?s (locn:adminUnitL1e AS ?p) (sample(?unitL1) AS ?o)
    WHERE {
      ?s a locn:Address.
      ?s locn:adminUnitL1 ?unitL1.
@@ -370,8 +370,8 @@ UNION
      BIND ("Agent" AS ?Class_Name).
      BIND (26 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("cv:hasRole should be a skos:Concept." AS ?Rule_Description).
-     BIND (concat("foaf:Agent ",str(?s)," does not have a cv:hasRole property of type skos:Concept.") AS ?Message).
+     BIND ("cv:hasRole should be a cv:PublicService." AS ?Rule_Description).
+     BIND (concat("foaf:Agent ",str(?s)," does not have a cv:hasRole property of type cv:PublicService.") AS ?Message).
    }
   }
 
@@ -392,12 +392,12 @@ UNION
      ?s a foaf:Agent.
      ?s cv:uses ?o.
      ?o ?p ?val.
-     FILTER(!EXISTS {?o a skos:Concept}).
+     FILTER(!EXISTS {?o a cv:PublicService}).
      BIND ("Agent" AS ?Class_Name).
      BIND (28 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
-     BIND ("cv:uses should be a skos:Concept." AS ?Rule_Description).
-     BIND (concat("foaf:Agent ",str(?s)," does not have a cv:uses property of type skos:Concept.") AS ?Message).
+     BIND ("cv:uses should be a cv:PublicService." AS ?Rule_Description).
+     BIND (concat("foaf:Agent ",str(?s)," does not have a cv:uses property of type cv:PublicService.") AS ?Message).
    }
   }
 
@@ -2120,7 +2120,7 @@ UNION
    WHERE {
      FILTER(!EXISTS {?s a cv:BusinessEvent}).
      BIND ("BusinessEvent" AS ?Class_Name).
-     BIND (200 AS ?Rule_ID).
+     BIND (153 AS ?Rule_ID).
      BIND ("error" AS ?Rule_Severity).
      BIND ("cv:BusinessEvent does not exist." AS ?Rule_Description).
      BIND (concat("The mandatory class cv:BusinessEvent does not exist.") AS ?Message).

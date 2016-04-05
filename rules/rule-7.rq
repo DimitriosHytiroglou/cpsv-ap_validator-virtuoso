@@ -1,19 +1,13 @@
 # Rule_ID:7
-# @title [Catalog] dct:description should be a literal
-# @tag catalog
+# @title [Address] locn:adminUnitL2 has maximum cardinality of 1 for Address
+# @tag Address
 
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
-SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
-WHERE {
-  ?s a dcat:Catalog.
-  ?s dct:description ?o.
-  FILTER(!isLiteral(?o)).
-  BIND (dct:description AS ?p).
-  BIND ("Catalog" AS ?Class_Name).
-  BIND (7 AS ?Rule_ID).
-  BIND ("error" AS ?Rule_Severity).
-  BIND ("dct:description should be a literal." AS ?Rule_Description).
-  BIND (concat("The dct:description ",str(?o)," is not a literal.") AS ?Message).
-}
+SELECT ("Address" AS ?Class_Name) (7 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:adminUnitL2 has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:adminUnitL2.") AS ?Message) ?s (locn:adminUnitL2 AS ?p) (sample(?unitL2) AS ?o)
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:adminUnitL2 ?unitL2.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+	 

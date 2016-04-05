@@ -1,20 +1,19 @@
 # Rule_ID:12
-# @title [Catalog] dct:title is a required property for Catalog
-# @tag catalog
+# @title [Address] locn:locatorName should be a literal
+# @tag Address
 
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
 
 SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
-WHERE {
-   ?s a dcat:Catalog.
-   FILTER(!(EXISTS { ?s dct:title ?title})).
-   BIND (rdf:type AS ?p).
-   BIND (dcat:Catalog AS ?o).
-   BIND ("Catalog" AS ?Class_Name).
-   BIND (12 AS ?Rule_ID).
-   BIND ("error" AS ?Rule_Severity).
-   BIND ("dct:title is a required property for Catalog." AS ?Rule_Description).
-   BIND (concat("The Catalog ", str(?o)," does not have a dct:title.") AS ?Message).
-}
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:locatorName ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (locn:locatorName AS ?p).
+     BIND ("Address" AS ?Class_Name).
+     BIND (12 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("locn:locatorName should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+   
