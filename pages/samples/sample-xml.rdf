@@ -142,7 +142,7 @@
 <rdf:Description rdf:about="http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#cost/paper-22">
 	<rdf:type rdf:resource="http://data.europa.eu/cv/Cost"/>
 	<cv:isDefinedBy rdf:resource="http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html"/>
-	<cv:monetary_value rdf:datatype="http://www.w3.org/2001/XMLSchema#double">324,14</cv:monetary_value>
+	<cv:monetary_value rdf:datatype="http://www.w3.org/2001/XMLSchema#double">324.14</cv:monetary_value>
 	<cv:currency rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
 	<dct:description>Fee to pay when the traduction is only delivered in paper form, until 22 pages</dct:description>
 </rdf:Description>
@@ -150,7 +150,7 @@
 <rdf:Description rdf:about="http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#cost/paper-more-22">
 	<rdf:type rdf:resource="http://data.europa.eu/cv/Cost"/>
 	<cv:isDefinedBy rdf:resource="http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html"/>
-	<cv:monetary_value rdf:datatype="http://www.w3.org/2001/XMLSchema#double">13,03</cv:monetary_value>
+	<cv:monetary_value rdf:datatype="http://www.w3.org/2001/XMLSchema#double">13.03</cv:monetary_value>
 	<cv:currency rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
 	<dct:description>Fee to pay per page when the traduction is only delivered in paper form, from the 23th page</dct:description>
 </rdf:Description>
@@ -158,7 +158,7 @@
 <rdf:Description rdf:about="http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#cost/digital-22">
 	<rdf:type rdf:resource="http://data.europa.eu/cv/Cost"/>
 	<cv:isDefinedBy rdf:resource="http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html"/>
-	<cv:monetary_value rdf:datatype="http://www.w3.org/2001/XMLSchema#double">275,52</cv:monetary_value>
+	<cv:monetary_value rdf:datatype="http://www.w3.org/2001/XMLSchema#double">275.52</cv:monetary_value>
 	<cv:currency rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
 	<dct:description>Fee to pay when the traduction is delivered online, in paper form and in CD, until 22 pages</dct:description>
 </rdf:Description>
@@ -166,7 +166,7 @@
 <rdf:Description rdf:about="http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html#cost/digital-more22">
 	<rdf:type rdf:resource="http://data.europa.eu/cv/Cost"/>
 	<cv:isDefinedBy rdf:resource="http://www.oepm.es/cs/OEPMSite/contenidos/Folletos/08-la-patente-europea.html"/>
-	<cv:monetary_value rdf:datatype="http://www.w3.org/2001/XMLSchema#double">11,08</cv:monetary_value>
+	<cv:monetary_value rdf:datatype="http://www.w3.org/2001/XMLSchema#double">11.08</cv:monetary_value>
 	<cv:currency rdf:resource="http://publications.europa.eu/resource/authority/currency/EUR"/>
 	<dct:description>Fee to pay when the traduction is delivered online, in paper form and in CD, from the 23th page</dct:description>
 </rdf:Description>
